@@ -17,16 +17,111 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Login" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzD-lf-Pbs">
-                                <rect key="frame" x="172" y="249" width="70" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="29"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="apw-OP-A3R" userLabel="Sign Up Container">
+                                <rect key="frame" x="0.0" y="106.5" width="414" height="352.5"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BA2-yj-Fns" userLabel="Continue Button">
+                                        <rect key="frame" x="17" y="250" width="380" height="60"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="계속"/>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="전화나 문자로 전화번호를 확인하겠습니다. 일반 문자 메시지 요금 및 데이터 요금이 부과됩니다." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Zbs-sj-QXk" userLabel="Notice Label">
+                                        <rect key="frame" x="17" y="182" width="380" height="53"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-8H-p8s">
+                                        <rect key="frame" x="17" y="17" width="380" height="155"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6so-40-YSh">
+                                                <rect key="frame" x="0.0" y="0.0" width="380" height="77.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jpf-pO-GAN">
+                                                <rect key="frame" x="0.0" y="77.5" width="380" height="77.5"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="BA2-yj-Fns" secondAttribute="trailing" constant="17" id="3QL-6X-k0a"/>
+                                    <constraint firstItem="Zbs-sj-QXk" firstAttribute="top" secondItem="fR1-8H-p8s" secondAttribute="bottom" constant="10" id="72z-rS-tup"/>
+                                    <constraint firstItem="fR1-8H-p8s" firstAttribute="height" secondItem="apw-OP-A3R" secondAttribute="height" multiplier="0.44" id="7Yo-jD-k4o"/>
+                                    <constraint firstItem="Zbs-sj-QXk" firstAttribute="height" secondItem="apw-OP-A3R" secondAttribute="height" multiplier="0.15" id="EaT-Kj-evu"/>
+                                    <constraint firstItem="fR1-8H-p8s" firstAttribute="top" secondItem="apw-OP-A3R" secondAttribute="top" constant="17" id="Mqd-xo-6Hb"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zbs-sj-QXk" secondAttribute="trailing" constant="17" id="OWb-6B-muW"/>
+                                    <constraint firstItem="fR1-8H-p8s" firstAttribute="leading" secondItem="apw-OP-A3R" secondAttribute="leading" constant="17" id="OYa-fQ-9SV"/>
+                                    <constraint firstItem="BA2-yj-Fns" firstAttribute="top" secondItem="Zbs-sj-QXk" secondAttribute="bottom" constant="15" id="QCw-5H-Dai"/>
+                                    <constraint firstItem="BA2-yj-Fns" firstAttribute="height" secondItem="apw-OP-A3R" secondAttribute="height" multiplier="0.17" id="SBk-cc-V04"/>
+                                    <constraint firstItem="Zbs-sj-QXk" firstAttribute="leading" secondItem="apw-OP-A3R" secondAttribute="leading" constant="17" id="SZy-8k-Wzn"/>
+                                    <constraint firstAttribute="trailing" secondItem="fR1-8H-p8s" secondAttribute="trailing" constant="17" id="sbf-pd-XWO"/>
+                                    <constraint firstItem="BA2-yj-Fns" firstAttribute="leading" secondItem="apw-OP-A3R" secondAttribute="leading" constant="17" id="tMY-61-iGa"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdA-LA-Sjd" userLabel="Header Container">
+                                <rect key="frame" x="0.0" y="44" width="414" height="62.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인 또는 회원 가입" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qzD-lf-Pbs">
+                                        <rect key="frame" x="75" y="6.5" width="264" height="50"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FeY-nk-Ote" userLabel="Quit Button">
+                                        <rect key="frame" x="10" y="6.5" width="50" height="50"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" secondItem="FeY-nk-Ote" secondAttribute="height" multiplier="1:1" id="B5b-Mw-nf1"/>
+                                        </constraints>
+                                        <color key="tintColor" systemColor="labelColor"/>
+                                        <state key="normal" image="xmark" catalog="system"/>
+                                    </button>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gbO-cF-P0n" userLabel="Bottom LIne">
+                                        <rect key="frame" x="0.0" y="61.5" width="414" height="1"/>
+                                        <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="1" id="cTj-Rb-xG8"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                <constraints>
+                                    <constraint firstItem="qzD-lf-Pbs" firstAttribute="centerY" secondItem="bdA-LA-Sjd" secondAttribute="centerY" id="0Oz-A8-dda"/>
+                                    <constraint firstAttribute="trailing" secondItem="qzD-lf-Pbs" secondAttribute="trailing" constant="75" id="1EZ-aD-tbf"/>
+                                    <constraint firstItem="FeY-nk-Ote" firstAttribute="centerY" secondItem="bdA-LA-Sjd" secondAttribute="centerY" id="Erd-OR-kfB"/>
+                                    <constraint firstItem="gbO-cF-P0n" firstAttribute="leading" secondItem="bdA-LA-Sjd" secondAttribute="leading" id="HTj-qC-fIe"/>
+                                    <constraint firstItem="FeY-nk-Ote" firstAttribute="height" secondItem="bdA-LA-Sjd" secondAttribute="height" multiplier="0.8" id="RZj-Zg-J4V"/>
+                                    <constraint firstAttribute="trailing" secondItem="gbO-cF-P0n" secondAttribute="trailing" id="aEq-se-sua"/>
+                                    <constraint firstItem="FeY-nk-Ote" firstAttribute="leading" secondItem="bdA-LA-Sjd" secondAttribute="leading" constant="10" id="hFN-Kr-BIk"/>
+                                    <constraint firstItem="qzD-lf-Pbs" firstAttribute="height" secondItem="bdA-LA-Sjd" secondAttribute="height" multiplier="0.8" id="iL8-sn-mix"/>
+                                    <constraint firstItem="qzD-lf-Pbs" firstAttribute="centerX" secondItem="bdA-LA-Sjd" secondAttribute="centerX" id="l15-NX-0t7"/>
+                                    <constraint firstAttribute="bottom" secondItem="gbO-cF-P0n" secondAttribute="bottom" id="uua-4M-AwR"/>
+                                    <constraint firstItem="qzD-lf-Pbs" firstAttribute="leading" secondItem="bdA-LA-Sjd" secondAttribute="leading" constant="75" id="xAx-gq-Kqx"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="brC-Y5-SLK" userLabel="LoginAPI Container">
+                                <rect key="frame" x="0.0" y="459" width="414" height="403"/>
+                                <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                            </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="apw-OP-A3R" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="CKH-nP-rmh"/>
+                            <constraint firstItem="apw-OP-A3R" firstAttribute="top" secondItem="bdA-LA-Sjd" secondAttribute="bottom" id="FHN-mR-VbS"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="apw-OP-A3R" secondAttribute="trailing" id="PAQ-wX-nbE"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="brC-Y5-SLK" secondAttribute="trailing" id="VMK-Zr-0X7"/>
+                            <constraint firstItem="brC-Y5-SLK" firstAttribute="top" secondItem="apw-OP-A3R" secondAttribute="bottom" id="Z1Y-ux-9gq"/>
+                            <constraint firstItem="brC-Y5-SLK" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.45" id="Zak-gw-fYF"/>
+                            <constraint firstItem="bdA-LA-Sjd" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="dSv-Ic-dSx"/>
+                            <constraint firstItem="bdA-LA-Sjd" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="qrB-4i-eKq"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="bdA-LA-Sjd" secondAttribute="trailing" id="sQp-4o-ZBd"/>
+                            <constraint firstItem="bdA-LA-Sjd" firstAttribute="height" secondItem="5EZ-qb-Rvc" secondAttribute="height" multiplier="0.07" id="tn5-Bz-PCo"/>
+                            <constraint firstItem="brC-Y5-SLK" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="u1J-6F-2IQ"/>
+                            <constraint firstItem="vDu-zF-Fre" firstAttribute="bottom" secondItem="brC-Y5-SLK" secondAttribute="bottom" id="w3d-dq-dvH"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -35,8 +130,21 @@
         </scene>
     </scenes>
     <resources>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <systemColor name="labelColor">
+            <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>
