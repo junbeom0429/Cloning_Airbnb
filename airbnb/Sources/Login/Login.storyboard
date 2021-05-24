@@ -95,14 +95,14 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-8H-p8s">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="-1" translatesAutoresizingMaskIntoConstraints="NO" id="fR1-8H-p8s">
                                                         <rect key="frame" x="25" y="17" width="340" height="130"/>
                                                         <subviews>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6so-40-YSh" userLabel="Country View">
-                                                                <rect key="frame" x="0.0" y="0.0" width="340" height="65"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="340" height="65.666666666666671"/>
                                                                 <subviews>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="국가/지역" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e1H-hT-3A0">
-                                                                        <rect key="frame" x="10" y="7" width="70" height="23"/>
+                                                                        <rect key="frame" x="10" y="7.0000000000000018" width="70" height="23.666666666666671"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="70" id="zvd-2H-4kS"/>
                                                                         </constraints>
@@ -111,7 +111,7 @@
                                                                         <nil key="highlightedColor"/>
                                                                     </label>
                                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="대한민국 (+82)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DND-SK-pWh">
-                                                                        <rect key="frame" x="10" y="24" width="180" height="31"/>
+                                                                        <rect key="frame" x="10" y="24" width="180" height="31.666666666666671"/>
                                                                         <constraints>
                                                                             <constraint firstAttribute="width" constant="180" id="urL-Xl-szx"/>
                                                                         </constraints>
@@ -126,11 +126,14 @@
                                                                             <constraint firstAttribute="width" constant="30" id="gTV-qD-pLj"/>
                                                                         </constraints>
                                                                     </imageView>
+                                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="country" translatesAutoresizingMaskIntoConstraints="NO" id="rl6-9F-IcZ">
+                                                                        <rect key="frame" x="-0.33333333333334281" y="-2" width="340.66666666666674" height="69.666666666666671"/>
+                                                                    </imageView>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AzG-35-MEx" userLabel="Highlight View1">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="65"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="65.666666666666671"/>
                                                                     </view>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cmz-QL-z0C">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="65"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="65.666666666666671"/>
                                                                         <connections>
                                                                             <action selector="touchCountryBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="bEp-Pr-Vhg"/>
                                                                             <segue destination="h5G-2J-4m0" kind="presentation" modalTransitionStyle="coverVertical" id="nql-BZ-V0Q"/>
@@ -140,30 +143,34 @@
                                                                 <constraints>
                                                                     <constraint firstItem="kL6-di-5NN" firstAttribute="centerY" secondItem="6so-40-YSh" secondAttribute="centerY" id="5Ty-q3-P9u"/>
                                                                     <constraint firstItem="DND-SK-pWh" firstAttribute="leading" secondItem="6so-40-YSh" secondAttribute="leading" constant="10" id="6ZX-4y-tly"/>
+                                                                    <constraint firstAttribute="bottom" secondItem="rl6-9F-IcZ" secondAttribute="bottom" constant="-2" id="EOt-q1-Ydj"/>
                                                                     <constraint firstAttribute="trailing" secondItem="AzG-35-MEx" secondAttribute="trailing" id="Iet-sD-NiA"/>
                                                                     <constraint firstAttribute="bottom" secondItem="DND-SK-pWh" secondAttribute="bottom" constant="10" id="IhQ-Md-yAW"/>
                                                                     <constraint firstItem="DND-SK-pWh" firstAttribute="centerY" secondItem="6so-40-YSh" secondAttribute="centerY" constant="7" id="JIo-nm-n1X"/>
                                                                     <constraint firstItem="e1H-hT-3A0" firstAttribute="leading" secondItem="6so-40-YSh" secondAttribute="leading" constant="10" id="K4N-1J-Abc"/>
+                                                                    <constraint firstAttribute="trailing" secondItem="rl6-9F-IcZ" secondAttribute="trailing" constant="-0.29999999999999999" id="Lza-ho-ovz"/>
                                                                     <constraint firstItem="AzG-35-MEx" firstAttribute="top" secondItem="6so-40-YSh" secondAttribute="top" id="OQ1-Vu-gOD"/>
                                                                     <constraint firstAttribute="bottom" secondItem="AzG-35-MEx" secondAttribute="bottom" id="PmB-EC-a8y"/>
                                                                     <constraint firstItem="Cmz-QL-z0C" firstAttribute="top" secondItem="6so-40-YSh" secondAttribute="top" id="RFw-fc-oHF"/>
                                                                     <constraint firstItem="AzG-35-MEx" firstAttribute="leading" secondItem="6so-40-YSh" secondAttribute="leading" id="WVS-Qz-stt"/>
                                                                     <constraint firstItem="e1H-hT-3A0" firstAttribute="centerY" secondItem="6so-40-YSh" secondAttribute="centerY" constant="-14" id="b2V-0p-JsE"/>
                                                                     <constraint firstItem="Cmz-QL-z0C" firstAttribute="leading" secondItem="6so-40-YSh" secondAttribute="leading" id="dTt-2a-aij"/>
+                                                                    <constraint firstItem="rl6-9F-IcZ" firstAttribute="leading" secondItem="6so-40-YSh" secondAttribute="leading" constant="-0.29999999999999999" id="ixq-ci-89b"/>
                                                                     <constraint firstAttribute="trailing" secondItem="Cmz-QL-z0C" secondAttribute="trailing" id="lHz-mn-C9k"/>
                                                                     <constraint firstItem="e1H-hT-3A0" firstAttribute="top" secondItem="6so-40-YSh" secondAttribute="top" constant="7" id="n6z-1q-h3I"/>
+                                                                    <constraint firstItem="rl6-9F-IcZ" firstAttribute="top" secondItem="6so-40-YSh" secondAttribute="top" constant="-2" id="tKh-3q-oP1"/>
                                                                     <constraint firstAttribute="trailing" secondItem="kL6-di-5NN" secondAttribute="trailing" constant="10" id="vdK-fV-WQQ"/>
                                                                     <constraint firstAttribute="bottom" secondItem="Cmz-QL-z0C" secondAttribute="bottom" id="wb5-qw-HfQ"/>
                                                                 </constraints>
                                                             </view>
                                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jpf-pO-GAN" userLabel="Phone Number View">
-                                                                <rect key="frame" x="0.0" y="65" width="340" height="65"/>
+                                                                <rect key="frame" x="0.0" y="64.666666666666657" width="340" height="65.333333333333343"/>
                                                                 <subviews>
                                                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="w2y-Bc-TSV" userLabel="Highlight View2">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="65"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="65.333333333333329"/>
                                                                     </view>
                                                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zrI-YP-Esz">
-                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="65"/>
+                                                                        <rect key="frame" x="0.0" y="0.0" width="340" height="65.333333333333329"/>
                                                                         <connections>
                                                                             <action selector="touchPhoneNumberBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="a1b-8M-YGT"/>
                                                                         </connections>
@@ -186,7 +193,7 @@
                                                         </constraints>
                                                     </stackView>
                                                 </subviews>
-                                                <color key="backgroundColor" systemColor="systemGrayColor"/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <constraints>
                                                     <constraint firstAttribute="trailing" secondItem="BA2-yj-Fns" secondAttribute="trailing" constant="25" id="3QL-6X-k0a"/>
                                                     <constraint firstItem="Zbs-sj-QXk" firstAttribute="top" secondItem="fR1-8H-p8s" secondAttribute="bottom" constant="10" id="72z-rS-tup"/>
@@ -647,14 +654,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="countryCell" id="OHP-5W-Qcp" customClass="CountryTableViewCell" customModule="airbnb" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="26.666666030883789"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="27"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OHP-5W-Qcp" id="VjF-LC-GBe">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="26.666666030883789"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="27"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPb-Bf-UMh">
-                                                    <rect key="frame" x="22" y="0.0" width="52" height="26.666666666666668"/>
+                                                    <rect key="frame" x="22" y="0.0" width="52" height="27"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -699,6 +706,7 @@
         <image name="appleLogo" width="30" height="30"/>
         <image name="arrow" width="80" height="80"/>
         <image name="continueBtnInactive" width="428" height="80"/>
+        <image name="country" width="2041" height="373"/>
         <image name="emailLogo" width="30" height="30"/>
         <image name="facebookLogo" width="30" height="30"/>
         <image name="googleLogo" width="30" height="30"/>
@@ -709,9 +717,6 @@
         </systemColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemGrayColor">
-            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

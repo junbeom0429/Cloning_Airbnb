@@ -25,6 +25,7 @@
 		0418FB1D265A283A00F368CB /* Tab3.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0418FB1C265A283A00F368CB /* Tab3.storyboard */; };
 		0418FB1F265A284200F368CB /* Tab3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418FB1E265A284200F368CB /* Tab3VC.swift */; };
 		0471CE6B265B18EF00546B15 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471CE6A265B18EF00546B15 /* CountryViewController.swift */; };
+		0471CE71265BF49000546B15 /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471CE70265BF49000546B15 /* CALayer.swift */; };
 		04938E5F265939E200DA11FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E5E265939E200DA11FF /* AppDelegate.swift */; };
 		04938E61265939E200DA11FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E60265939E200DA11FF /* SceneDelegate.swift */; };
 		04938E63265939E200DA11FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E62265939E200DA11FF /* ViewController.swift */; };
@@ -64,6 +65,7 @@
 		0418FB1C265A283A00F368CB /* Tab3.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Tab3.storyboard; sourceTree = "<group>"; };
 		0418FB1E265A284200F368CB /* Tab3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3VC.swift; sourceTree = "<group>"; };
 		0471CE6A265B18EF00546B15 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
+		0471CE70265BF49000546B15 /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
 		04938E5B265939E200DA11FF /* airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04938E5E265939E200DA11FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04938E60265939E200DA11FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				04938E952659EB9C00DA11FF /* UIFont.swift */,
 				04938E992659EB9C00DA11FF /* UINavigationBar.swift */,
 				04938E982659EB9C00DA11FF /* UIViewController.swift */,
+				0471CE70265BF49000546B15 /* CALayer.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -456,6 +459,7 @@
 				04938E9F2659EB9C00DA11FF /* UIViewController.swift in Sources */,
 				04938E7C26593AA000DA11FF /* Constant.swift in Sources */,
 				040CDDF02659EE3100E7E090 /* IndicatorView.swift in Sources */,
+				0471CE71265BF49000546B15 /* CALayer.swift in Sources */,
 				04938EA12659EB9C00DA11FF /* Color.swift in Sources */,
 				040CDDFF2659FB9F00E7E090 /* Tab1VC.swift in Sources */,
 			);

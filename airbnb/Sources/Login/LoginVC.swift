@@ -72,15 +72,18 @@ class LoginVC: BaseViewController {
     func signUpContainerConfig() {
         ContinueBtn.layer.cornerRadius = 10
         
-        countryView.layer.cornerRadius = 10
-        countryView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-        countryView.layer.borderWidth = 1
-        countryView.layer.borderColor = UIColor.darkGray.cgColor
+        
+//        countryView.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+//        countryView.layer.cornerRadius = 10
+//        countryView.layer.borderWidth = 1
+//        countryView.layer.borderColor = UIColor.darkGray.cgColor
+//        countryView.layer.addBorder([.top,.left,.right], color: .darkGray, width: 1)
+        
         
         phoneNumberView.layer.cornerRadius = 10
-        phoneNumberView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMinXMinYCorner]
+        phoneNumberView.layer.maskedCorners = [.layerMinXMaxYCorner, .layerMaxXMaxYCorner]
         phoneNumberView.layer.borderWidth = 1
-        phoneNumberView.layer.borderColor = UIColor.darkGray.cgColor
+        phoneNumberView.layer.borderColor = UIColor.borderLightGray.cgColor
         
         highlightView1.layer.cornerRadius = 10
         highlightView2.layer.cornerRadius = 10
