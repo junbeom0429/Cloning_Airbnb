@@ -15,6 +15,11 @@ class Tab1VC: BaseViewController {
     
     
     override func viewDidLoad() {
-        
+        suggestLogin()
+    }
+    func suggestLogin() {
+        if UserInform.isLogin == false {
+            performSegue(withIdentifier: "tab1ToLogin", sender: self)
+        }
     }
 }

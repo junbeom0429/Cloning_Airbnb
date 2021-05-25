@@ -6,5 +6,8 @@ target 'airbnb' do
   use_frameworks!
 
   # Pods for airbnb
+
   pod 'GoogleSignIn'
+  pod 'FBSDKLoginKit'
+
 end

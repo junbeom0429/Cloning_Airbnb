@@ -19,6 +19,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <tabBarItem key="tabBarItem" title="" image="TapLogin1" selectedImage="TapLogin2" id="hzN-NS-3au"/>
                     <navigationItem key="navigationItem" id="Sq5-fo-fCe"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                 </viewController>
@@ -46,6 +47,8 @@
         </scene>
     </scenes>
     <resources>
+        <image name="TapLogin1" width="50" height="50"/>
+        <image name="TapLogin2" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

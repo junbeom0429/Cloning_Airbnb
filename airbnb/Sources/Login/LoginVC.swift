@@ -7,16 +7,26 @@
 
 import UIKit
 import SnapKit
+import GoogleSignIn
+import FBSDKLoginKit
 
 class LoginVC: BaseViewController {
     override func viewDidLoad() {
         LoginAPIConfig()
         signUpContainerConfig()
         emailContainerConfig()
+        GIDSignIn.sharedInstance()?.presentingViewController = self // 로그인화면 불러오기
+        GIDSignIn.sharedInstance()?.restorePreviousSignIn() // 자동로그인
+        if let token = AccessToken.current, !token.isExpired { /* User is logged in, do work such as go to next view controller*/ }
     }
-    // MARK: - Header Container
     
-
+    
+    
+    // MARK: - Header Container
+    @IBAction func quitBtnAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     // MARK: - Sign Up Container
     // 변수
     var constraints: [NSLayoutConstraint] = []
@@ -37,6 +47,9 @@ class LoginVC: BaseViewController {
     @IBOutlet weak var signUpStackView: UIStackView!
     @IBOutlet weak var phoneNumberOriginLoc: UIView!
     @IBOutlet weak var phoneNumberTargetLoc: UIView!
+    @IBOutlet weak var countryInfoLabel: UILabel!
+    
+    
     @IBOutlet weak var originLocTop: NSLayoutConstraint!
     @IBOutlet weak var originLocLeading: NSLayoutConstraint!
     @IBOutlet weak var originLocHeight: NSLayoutConstraint!
@@ -54,6 +67,7 @@ class LoginVC: BaseViewController {
         moveHighlightView(target: phoneNumberView)
         movePN(target: phoneNumberTargetLoc)
         phoneNumTextField.becomeFirstResponder()
+        inputAccessoryView()
     }
     func movePN(target: UIView) {
         if ismoved == false {
@@ -114,12 +128,23 @@ class LoginVC: BaseViewController {
         highlightView2.layer.cornerRadius = 10
         
     }
+    func inputAccessoryView() {
+        let bar = UIToolbar()
+        let close = UIBarButtonItem(title: "닫기", style: .plain, target: self, action: #selector(close))
+        bar.items = [close]
+        bar.sizeThatFits(CGSize(width: 390, height: 60))
+        phoneNumTextField.inputAccessoryView = bar
+    }
     
+    @objc func close() {
+        phoneNumTextField.resignFirstResponder()
+    }
     // MARK: - Email Container
     //변수
     var isEmailHighlighted = false
     var isTouchedEmail = false
     var emailConstraints: [NSLayoutConstraint] = []
+
     
     //아웃렛
     @IBOutlet weak var emailContainer: UIView!
@@ -195,6 +220,7 @@ class LoginVC: BaseViewController {
     @IBOutlet weak var googleBtn: UIButton!
     @IBOutlet weak var facebookBtn: UIButton!
     @IBOutlet weak var emailOutlet: UIView!
+    @IBOutlet weak var phoneOutlet: UIView!
     @IBOutlet weak var appleOutlet: UIView!
     @IBOutlet weak var googleOutlet: UIView!
     @IBOutlet weak var facebookOutlet: UIView!
@@ -202,16 +228,35 @@ class LoginVC: BaseViewController {
     
     // 액션
     @IBAction func touchLoginWithEmail(_ sender: Any) {
+        showEmailContainer()
+    }
+    @IBAction func googleLoginAction(_ sender: Any) {
+        googleLogin()
+    }
+    @IBAction func facebookLoginAction(_ sender: Any) {
+        LoginManager().logIn()
+    }
+    @IBAction func touchDown(_ sender: UIButton) {
+        changeBackgroundColorWhenTouchDown(btn: sender)
+    }
+    @IBAction func touchCancel(_ sender: UIButton) {
+        changeBGColorWhenTouchCancel(btn: sender)
+    }
+    
+    // 함수
+    func showEmailContainer() {
         if isEmail == false {
-            self.signUpContainer.isHidden = true
-            self.signUpContainer.alpha = 0
-            self.emailContainer.isHidden = false
-            self.emailContainer.alpha = 0
+            signUpContainer.isHidden = true
+            signUpContainer.alpha = 0
+            emailContainer.isHidden = false
+            emailContainer.alpha = 0
+            emailOutlet.isHidden = true
+            phoneOutlet.isHidden = false
             
             NSLayoutConstraint.deactivate(loginAPIConstraints)
             loginAPIContainer.translatesAutoresizingMaskIntoConstraints = false
             loginAPIConstraints = [
-                self.loginAPIContainer.topAnchor.constraint(equalTo: self.emailContainer.bottomAnchor)
+                loginAPIContainer.topAnchor.constraint(equalTo: emailContainer.bottomAnchor)
             ]
             NSLayoutConstraint.activate(loginAPIConstraints)
             
@@ -221,14 +266,16 @@ class LoginVC: BaseViewController {
             }
             isEmail = true
         } else if isEmail == true {
-            self.signUpContainer.isHidden = false
-            self.emailContainer.isHidden = true
-            self.emailContainer.alpha = 0
+            signUpContainer.isHidden = false
+            emailContainer.isHidden = true
+            emailContainer.alpha = 0
+            phoneOutlet.isHidden = true
+            emailOutlet.isHidden = false
             
             NSLayoutConstraint.deactivate(loginAPIConstraints)
             loginAPIContainer.translatesAutoresizingMaskIntoConstraints = false
             loginAPIConstraints = [
-                self.loginAPIContainer.topAnchor.constraint(equalTo: self.signUpContainer.bottomAnchor)
+                loginAPIContainer.topAnchor.constraint(equalTo: signUpContainer.bottomAnchor)
             ]
             NSLayoutConstraint.activate(loginAPIConstraints)
             
@@ -239,12 +286,20 @@ class LoginVC: BaseViewController {
             isEmail = false
         }
     }
-    
-    @IBAction func touchDown(_ sender: UIButton) {
-        changeBackgroundColorWhenTouchDown(btn: sender)
+
+    // MARK: 구글 로그인
+    func googleLogin() {
+        GIDSignIn.sharedInstance()?.signIn()
     }
-    @IBAction func touchCancel(_ sender: UIButton) {
-        changeBGColorWhenTouchCancel(btn: sender)
+    func googleLogout() {
+        GIDSignIn.sharedInstance()?.signOut()
+    }
+    // MARK: 페이스북
+    func facebookLogin() {
+        LoginManager().logIn()
+    }
+    func facebookLogout() {
+        LoginManager().logOut()
     }
     
     func changeBackgroundColorWhenTouchDown(btn: UIButton) {
@@ -258,24 +313,26 @@ class LoginVC: BaseViewController {
         }
     }
     func LoginAPIConfig() {
-        emailOutlet.layer.cornerRadius = 5
+        emailOutlet.layer.cornerRadius = 10
         emailOutlet.layer.borderWidth = 0.5
         emailOutlet.layer.borderColor = UIColor.darkGray.cgColor
+        phoneOutlet.layer.cornerRadius = 10
+        phoneOutlet.layer.borderWidth = 0.5
+        phoneOutlet.layer.borderColor = UIColor.darkGray.cgColor
         
-        appleOutlet.layer.cornerRadius = 5
-        appleBtn.layer.cornerRadius = 5
+        appleOutlet.layer.cornerRadius = 10
+        appleBtn.layer.cornerRadius = 10
         appleOutlet.layer.borderWidth = 0.5
         appleOutlet.layer.borderColor = UIColor.darkGray.cgColor
         
-        googleOutlet.layer.cornerRadius = 5
-        googleBtn.layer.cornerRadius = 5
+        googleOutlet.layer.cornerRadius = 10
+        googleBtn.layer.cornerRadius = 10
         googleOutlet.layer.borderWidth = 0.5
         googleOutlet.layer.borderColor = UIColor.darkGray.cgColor
         
-        facebookOutlet.layer.cornerRadius = 5
-        facebookBtn.layer.cornerRadius = 5
+        facebookOutlet.layer.cornerRadius = 10
+        facebookBtn.layer.cornerRadius = 10
         facebookOutlet.layer.borderWidth = 0.5
         facebookOutlet.layer.borderColor = UIColor.darkGray.cgColor
-        
     }
 }

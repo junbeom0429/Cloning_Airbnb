@@ -8,17 +8,27 @@
 import UIKit
 
 class CountryViewController: BaseViewController {
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-
     }
-
+    @IBAction func quitBtnAction(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        
+    }
 }
 
 extension CountryViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 80
+    }
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        UserInform.country = Constant.countryList.sorted(by: < )[indexPath.row].key
+        UserInform.countryNum = Constant.countryList.sorted(by: < )[indexPath.row].value
+        if let vc = self.presentingViewController as? LoginVC {
+            vc.countryInfoLabel.text = "\(UserInform.country) (+\(UserInform.countryNum))"
+        }
+        dismiss(animated: true, completion: nil)
+        
     }
 }
 extension CountryViewController: UITableViewDataSource {

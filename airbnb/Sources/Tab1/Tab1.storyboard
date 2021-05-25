@@ -29,7 +29,7 @@
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Item" image="pencil" catalog="system" selectedImage="pencil.tip.crop.circle.badge.minus" id="Jzz-C5-e5G"/>
+                    <tabBarItem key="tabBarItem" title="" image="TapSearch1" selectedImage="TapSearch2" id="Jzz-C5-e5G"/>
                     <navigationItem key="navigationItem" id="Vhk-HT-kTh"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -68,8 +68,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="pencil" catalog="system" width="128" height="113"/>
-        <image name="pencil.tip.crop.circle.badge.minus" catalog="system" width="128" height="108"/>
+        <image name="TapSearch1" width="50" height="50"/>
+        <image name="TapSearch2" width="50" height="50"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -7,15 +7,25 @@
 
 import UIKit
 import GoogleSignIn
+import FBSDKCoreKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
     func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+        // 구글
         guard let scheme = URLContexts.first?.url.scheme else { return }
         if scheme.contains("com.googleusercontent.apps") {
             GIDSignIn.sharedInstance().handle(URLContexts.first?.url)
         }
+        // 페이스북
+        guard let url = URLContexts.first?.url else { return }
+            ApplicationDelegate.shared.application(
+                UIApplication.shared,
+                open: url,
+                sourceApplication: nil,
+                annotation: [UIApplication.OpenURLOptionsKey.annotation]
+            )
     }
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {

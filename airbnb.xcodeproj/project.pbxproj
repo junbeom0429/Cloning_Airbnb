@@ -26,6 +26,7 @@
 		0418FB1F265A284200F368CB /* Tab3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418FB1E265A284200F368CB /* Tab3VC.swift */; };
 		0471CE6B265B18EF00546B15 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471CE6A265B18EF00546B15 /* CountryViewController.swift */; };
 		0471CE71265BF49000546B15 /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471CE70265BF49000546B15 /* CALayer.swift */; };
+		0471CE73265CE0E900546B15 /* UserInform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471CE72265CE0E900546B15 /* UserInform.swift */; };
 		04938E5F265939E200DA11FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E5E265939E200DA11FF /* AppDelegate.swift */; };
 		04938E61265939E200DA11FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E60265939E200DA11FF /* SceneDelegate.swift */; };
 		04938E63265939E200DA11FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E62265939E200DA11FF /* ViewController.swift */; };
@@ -66,6 +67,7 @@
 		0418FB1E265A284200F368CB /* Tab3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3VC.swift; sourceTree = "<group>"; };
 		0471CE6A265B18EF00546B15 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		0471CE70265BF49000546B15 /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
+		0471CE72265CE0E900546B15 /* UserInform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInform.swift; sourceTree = "<group>"; };
 		04938E5B265939E200DA11FF /* airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04938E5E265939E200DA11FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04938E60265939E200DA11FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				04938E7B26593AA000DA11FF /* Constant.swift */,
+				0471CE72265CE0E900546B15 /* UserInform.swift */,
 				04938E7326593A2100DA11FF /* Secret */,
 				04938E7426593A2900DA11FF /* Font */,
 				04938E7526593A2F00DA11FF /* Extension */,
@@ -452,6 +455,7 @@
 				04938E9B2659EB9C00DA11FF /* String.swift in Sources */,
 				040CDE1E265A1D0D00E7E090 /* Map.swift in Sources */,
 				04938E9C2659EB9C00DA11FF /* UIFont.swift in Sources */,
+				0471CE73265CE0E900546B15 /* UserInform.swift in Sources */,
 				04938E9D2659EB9C00DA11FF /* UIButton.swift in Sources */,
 				04938E61265939E200DA11FF /* SceneDelegate.swift in Sources */,
 				0418FB1A265A279A00F368CB /* Tab2VC.swift in Sources */,
@@ -538,7 +542,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -593,7 +597,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
