@@ -249,7 +249,7 @@ class LoginVC: BaseViewController {
     
     func changeBackgroundColorWhenTouchDown(btn: UIButton) {
         UIView.animate(withDuration: 0.2) {
-            btn.backgroundColor = UIColor.lightGray
+            btn.backgroundColor = UIColor.red
         }
     }
     func changeBGColorWhenTouchCancel(btn: UIButton) {

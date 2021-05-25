@@ -18,7 +18,14 @@
 	<string>1.0</string>
 	<key>CFBundleURLTypes</key>
 	<array>
-		<dict/>
+        <dict>
+                <key>CFBundleTypeRole</key>
+                <string>Editor</string>
+                <key>CFBundleURLSchemes</key>
+                <array>
+                  <string>com.googleusercontent.apps.186497991722-ts2ubj7gaf851vfv8b3vcnqjq0g5p5mf</string>
+                </array>
+              </dict>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>

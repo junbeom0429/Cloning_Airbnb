@@ -306,11 +306,10 @@
                                                                             <constraint firstItem="4Sh-1J-uJD" firstAttribute="height" secondItem="lTX-lA-sJy" secondAttribute="height" multiplier="0.8" id="ZXT-Bq-OjM"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QzU-TI-0sF">
+                                                                    <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" lineBreakMode="middleTruncation" pointerInteraction="YES" translatesAutoresizingMaskIntoConstraints="NO" id="QzU-TI-0sF">
                                                                         <rect key="frame" x="0.0" y="0.0" width="340" height="51.333333333333336"/>
+                                                                        <color key="tintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                                         <connections>
-                                                                            <action selector="touchCancel:" destination="Y6W-OH-hqX" eventType="touchCancel" id="ta3-Ge-NGA"/>
-                                                                            <action selector="touchDown:" destination="Y6W-OH-hqX" eventType="touchDown" id="D1b-IT-egD"/>
                                                                             <action selector="touchLoginWithEmail:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="cQn-Cc-DHC"/>
                                                                         </connections>
                                                                     </button>
@@ -423,7 +422,7 @@
                                                                             <constraint firstItem="98q-CP-ZIu" firstAttribute="centerX" secondItem="8jE-Bs-edP" secondAttribute="centerX" constant="-10" id="e2G-Fo-fgU"/>
                                                                         </constraints>
                                                                     </view>
-                                                                    <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moR-RZ-lKs">
+                                                                    <button opaque="NO" alpha="0.40000000000000002" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="moR-RZ-lKs">
                                                                         <rect key="frame" x="0.0" y="0.0" width="340" height="51"/>
                                                                     </button>
                                                                 </subviews>
@@ -761,14 +760,14 @@
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="countryCell" id="OHP-5W-Qcp" customClass="CountryTableViewCell" customModule="airbnb" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="26"/>
+                                        <rect key="frame" x="0.0" y="24.333333969116211" width="390" height="26.333333969116211"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="OHP-5W-Qcp" id="VjF-LC-GBe">
-                                            <rect key="frame" x="0.0" y="0.0" width="390" height="26"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="390" height="26.333333969116211"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KPb-Bf-UMh">
-                                                    <rect key="frame" x="22" y="0.0" width="48" height="26"/>
+                                                    <rect key="frame" x="22" y="0.0" width="48" height="26.333333333333332"/>
                                                     <fontDescription key="fontDescription" type="system" weight="thin" pointSize="21"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
