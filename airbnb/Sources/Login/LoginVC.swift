@@ -47,9 +47,9 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
     // MARK: - Sign Up Container
     // 변수
     var constraints: [NSLayoutConstraint] = []
-    var PNConstraints:  [NSLayoutConstraint] = [
-        
-    ]
+    var PNConstraints:  [NSLayoutConstraint] = []
+    var phoneNumRegex = false
+    
     var isShowed = false
     var showedHighlightView = UIView()
     var ismoved = false
@@ -84,8 +84,13 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
         moveHighlightView(target: phoneNumberView)
         movePN(target: phoneNumberTargetLoc)
         phoneNumTextField.becomeFirstResponder()
-        
     }
+    @IBAction func continueBtnAction(_ sender: Any) {
+        print("continueBtnAction called")
+//        performSegue(withIdentifier: "goToRegi", sender: self)
+    }
+    
+    
     
     // MARK: 함수
     func movePN(target: UIView) {
@@ -148,65 +153,83 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
         highlightView2.layer.cornerRadius = 10
         
     }
-    func inputAccessoryView() {
-        let bar = UIToolbar()
-        let close = UIBarButtonItem(title: "닫기", style: .plain, target: self, action: #selector(close))
-        bar.items = [close]
-        bar.sizeThatFits(CGSize(width: 390, height: 60))
-        phoneNumTextField.inputAccessoryView = bar
-    }
     
-    @objc func close() {
-        phoneNumTextField.resignFirstResponder()
+    
+    func changeCountinueBtnActivityStatus(_ isRegex: Bool, btn: UIButton) {
+        let inActiveImg = UIImage(named: "continueBtnInactive.png")
+        let activeImg = UIImage(named: "continueBtn.png")
+        if isRegex == true {
+            btn.isEnabled = true
+            btn.setImage(activeImg, for: .normal)
+            btn.reloadInputViews()
+        } else {
+            btn.isEnabled = false
+            btn.setImage(inActiveImg, for: .normal)
+            btn.reloadInputViews()
+        }
     }
     
     // MARK: Textfield Delegate
     // 입력된 스트링 확인
     func textFieldDidChangeSelection(_ textField: UITextField) {
         print(textField.text!)
+        
+        if textField == phoneNumTextField {
+            let inputNum = textField.text!
+            let isRegex = Regex.shared.isPhone(candidate: inputNum)
+            if isRegex == true {
+                changeCountinueBtnActivityStatus(true, btn: ContinueBtn)
+            } else {
+                changeCountinueBtnActivityStatus(false, btn: ContinueBtn)
+            }
+        } else if textField == emailTextField {
+            let inputNum = textField.text!
+            let isRegex = Regex.shared.isEmail(candidate: inputNum)
+            if isRegex == true {
+                changeCountinueBtnActivityStatus(true, btn: emailContinueBtn)
+            } else {
+                changeCountinueBtnActivityStatus(false, btn: emailContinueBtn)
+            }
+        }
     }
+    
     // 키보드 위에 툴바뷰 붙이기
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-            setupTextFieldsAccessoryView()
+        if textField == phoneNumTextField {
+            setupTextFieldsAccessoryView(phoneNumTextField)
+        } else if textField == emailTextField {
+            setupTextFieldsAccessoryView(emailTextField)
+        }
+            
             return true
     }
-    // 툴바뷰 생성
-    func setupTextFieldsAccessoryView() {
-            guard phoneNumTextField.inputAccessoryView == nil else {
-                print("textfields accessory view already set up")
-                return
-            }
-
-            // Create toolBar
-            let toolBar: UIToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 44))
-            toolBar.barStyle = UIBarStyle.default
-            toolBar.isTranslucent = false
-//        toolBar.backgroundColor = UIColor.
-        toolBar.barTintColor = UIColor.keyboardLightGray
-            // Add buttons as `UIBarButtonItem` to toolbar
-            // First add some space to the left hand side, so your button is not on the edge of the screen
-        let flexsibleSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
     
-        // flexible space to add left end side
-
-            // Create your first visible button
-        let doneButton: UIBarButtonItem = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(didPressDoneButton))
-        doneButton.tintColor = UIColor.darkGray //UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(didPressDoneButton))
-        
-            // Note, that we declared the `didPressDoneButton` to be called, when Done button has been pressed
-            toolBar.items = [flexsibleSpace, doneButton]
-
-            // Assing toolbar as inputAccessoryView
-        phoneNumTextField.inputAccessoryView = toolBar
+    // 툴바뷰 생성
+    func setupTextFieldsAccessoryView(_ textFieldName: UITextField) {
+        guard textFieldName.inputAccessoryView == nil else {
+            print("textfields accessory view already set up")
+            return
         }
+        
+        let toolBar: UIToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 44))
+        toolBar.barStyle = UIBarStyle.default
+        toolBar.isTranslucent = false
+        toolBar.barTintColor = UIColor.keyboardLightGray
+        
+        let flexsibleSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+        
+        let doneButton: UIBarButtonItem = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(didPressDoneButton))
+        doneButton.tintColor = UIColor.darkGray
+        toolBar.items = [flexsibleSpace, doneButton]
+        
+        textFieldName.inputAccessoryView = toolBar
+    }
+    
     // 툴바 done버튼 클릭
     @objc func didPressDoneButton(button: UIButton) {
-            // Button has been pressed
-            // Process the containment of the textfield or whatever
-
-            // Hide keyboard
-            phoneNumTextField.resignFirstResponder()
-        }
+        phoneNumTextField.resignFirstResponder()
+        emailTextField.resignFirstResponder()
+    }
     
     // MARK: - Email Container
     //변수
@@ -229,13 +252,20 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTop: NSLayoutConstraint!
     @IBOutlet weak var emailLeading: NSLayoutConstraint!
     
-    //액션
+    // MARK: 액션
     @IBAction func emailViewAction(_ sender: Any) {
         moveEmail(target: emailTargetLoc)
         showEmailHighlight(highlight: highlightView3)
         emailTextField.becomeFirstResponder()
     }
+    @IBAction func emailContinueBtnAction(_ sender: Any) {
+        emailTextField.resignFirstResponder()
+        UserInform.email = emailTextField.text!
+        performSegue(withIdentifier: "goToRegi", sender: self)
+    }
     
+    
+    // MARK: 함수
     func moveEmail(target: UIView) {
         if isTouchedEmail == false {
             emailView.removeConstraint(emailTop)
@@ -295,7 +325,7 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
     @IBOutlet weak var facebookOutlet: UIView!
     
     
-    // 액션
+    // MARK: 액션
     @IBAction func touchLoginWithEmail(_ sender: Any) {
         showEmailContainer()
     }
@@ -305,12 +335,7 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
     @IBAction func facebookLoginAction(_ sender: Any) {
         LoginManager().logIn()
     }
-    @IBAction func touchDown(_ sender: UIButton) {
-        changeBackgroundColorWhenTouchDown(btn: sender)
-    }
-    @IBAction func touchCancel(_ sender: UIButton) {
-        changeBGColorWhenTouchCancel(btn: sender)
-    }
+
     
     // 함수
     func showEmailContainer() {
