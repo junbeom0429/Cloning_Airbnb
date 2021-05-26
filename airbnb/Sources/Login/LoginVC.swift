@@ -10,7 +10,7 @@ import SnapKit
 import GoogleSignIn
 import FBSDKLoginKit
 
-class LoginVC: BaseViewController {
+class LoginVC: BaseViewController, UITextFieldDelegate {
     override func viewDidLoad() {
         LoginAPIConfig()
         signUpContainerConfig()
@@ -18,9 +18,26 @@ class LoginVC: BaseViewController {
         GIDSignIn.sharedInstance()?.presentingViewController = self // 로그인화면 불러오기
         GIDSignIn.sharedInstance()?.restorePreviousSignIn() // 자동로그인
         if let token = AccessToken.current, !token.isExpired { /* User is logged in, do work such as go to next view controller*/ }
+        //키보드 노티피케이션
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
+        
     }
     
+    // 뷰 bottom constant
+    @IBOutlet weak var scrollViewBottom: NSLayoutConstraint!
     
+    // 키보드에 따른 뷰높이 조절
+    @objc private func adjustInputView(noti: Notification) {
+        guard let userInfo = noti.userInfo else { return }
+        guard let keyboardFrame = (userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue else { return }
+        if noti.name == UIResponder.keyboardWillShowNotification {
+            let adjustmentHeight = keyboardFrame.height - view.safeAreaInsets.bottom
+            scrollViewBottom.constant = adjustmentHeight
+        } else {
+            scrollViewBottom.constant = 0
+        }
+    }
     
     // MARK: - Header Container
     @IBAction func quitBtnAction(_ sender: Any) {
@@ -56,19 +73,21 @@ class LoginVC: BaseViewController {
     @IBOutlet weak var originLocWidth: NSLayoutConstraint!
     @IBOutlet weak var phoneNumTextField: UITextField!
     
-    // 액션
+    // MARK: 액션
     @IBAction func touchCountryBtn(_ sender: Any) {
         showHighlightView(target: countryView, highlight: highlightView1)
         moveHighlightView(target: countryView)
-        
     }
+    //핸드폰번호 입력창 터치 액션
     @IBAction func touchPhoneNumberBtn(_ sender: Any) {
         showHighlightView(target: phoneNumberView, highlight: highlightView2)
         moveHighlightView(target: phoneNumberView)
         movePN(target: phoneNumberTargetLoc)
         phoneNumTextField.becomeFirstResponder()
-        inputAccessoryView()
+        
     }
+    
+    // MARK: 함수
     func movePN(target: UIView) {
         if ismoved == false {
             phoneNumberView.removeConstraint(originLocLeading)
@@ -116,6 +135,7 @@ class LoginVC: BaseViewController {
             }
         }
     }
+    // 컨피그
     func signUpContainerConfig() {
         ContinueBtn.layer.cornerRadius = 10
               
@@ -139,6 +159,55 @@ class LoginVC: BaseViewController {
     @objc func close() {
         phoneNumTextField.resignFirstResponder()
     }
+    
+    // MARK: Textfield Delegate
+    // 입력된 스트링 확인
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        print(textField.text!)
+    }
+    // 키보드 위에 툴바뷰 붙이기
+    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
+            setupTextFieldsAccessoryView()
+            return true
+    }
+    // 툴바뷰 생성
+    func setupTextFieldsAccessoryView() {
+            guard phoneNumTextField.inputAccessoryView == nil else {
+                print("textfields accessory view already set up")
+                return
+            }
+
+            // Create toolBar
+            let toolBar: UIToolbar = UIToolbar(frame:CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 44))
+            toolBar.barStyle = UIBarStyle.default
+            toolBar.isTranslucent = false
+//        toolBar.backgroundColor = UIColor.
+        toolBar.barTintColor = UIColor.keyboardLightGray
+            // Add buttons as `UIBarButtonItem` to toolbar
+            // First add some space to the left hand side, so your button is not on the edge of the screen
+        let flexsibleSpace: UIBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
+    
+        // flexible space to add left end side
+
+            // Create your first visible button
+        let doneButton: UIBarButtonItem = UIBarButtonItem(title: "닫기", style: .done, target: self, action: #selector(didPressDoneButton))
+        doneButton.tintColor = UIColor.darkGray //UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.done, target: self, action: #selector(didPressDoneButton))
+        
+            // Note, that we declared the `didPressDoneButton` to be called, when Done button has been pressed
+            toolBar.items = [flexsibleSpace, doneButton]
+
+            // Assing toolbar as inputAccessoryView
+        phoneNumTextField.inputAccessoryView = toolBar
+        }
+    // 툴바 done버튼 클릭
+    @objc func didPressDoneButton(button: UIButton) {
+            // Button has been pressed
+            // Process the containment of the textfield or whatever
+
+            // Hide keyboard
+            phoneNumTextField.resignFirstResponder()
+        }
+    
     // MARK: - Email Container
     //변수
     var isEmailHighlighted = false

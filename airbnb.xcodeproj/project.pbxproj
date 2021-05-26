@@ -44,6 +44,7 @@
 		04938E9F2659EB9C00DA11FF /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E982659EB9C00DA11FF /* UIViewController.swift */; };
 		04938EA02659EB9C00DA11FF /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E992659EB9C00DA11FF /* UINavigationBar.swift */; };
 		04938EA12659EB9C00DA11FF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E9A2659EB9C00DA11FF /* Color.swift */; };
+		04BB2C81265E090C00EF56B6 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2C80265E090C00EF56B6 /* Keyboard.swift */; };
 		ECD254E4ECC7DF7B5509BD31 /* Pods_airbnb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43A250BA34B08E3C8CFEF9E /* Pods_airbnb.framework */; };
 /* End PBXBuildFile section */
 
@@ -84,6 +85,7 @@
 		04938E982659EB9C00DA11FF /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		04938E992659EB9C00DA11FF /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		04938E9A2659EB9C00DA11FF /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		04BB2C80265E090C00EF56B6 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		2D85B3EB4218A0AE683B21E8 /* Pods-airbnb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnb.debug.xcconfig"; path = "Target Support Files/Pods-airbnb/Pods-airbnb.debug.xcconfig"; sourceTree = "<group>"; };
 		4D9CB5C1513C45864EF64961 /* Pods-airbnb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnb.release.xcconfig"; path = "Target Support Files/Pods-airbnb/Pods-airbnb.release.xcconfig"; sourceTree = "<group>"; };
 		B43A250BA34B08E3C8CFEF9E /* Pods_airbnb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_airbnb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -255,6 +257,7 @@
 			children = (
 				040CDDEF2659EE3100E7E090 /* Device.swift */,
 				040CDDEE2659EE3100E7E090 /* IndicatorView.swift */,
+				04BB2C80265E090C00EF56B6 /* Keyboard.swift */,
 			);
 			path = CommonClass;
 			sourceTree = "<group>";
@@ -464,6 +467,7 @@
 				04938E7C26593AA000DA11FF /* Constant.swift in Sources */,
 				040CDDF02659EE3100E7E090 /* IndicatorView.swift in Sources */,
 				0471CE71265BF49000546B15 /* CALayer.swift in Sources */,
+				04BB2C81265E090C00EF56B6 /* Keyboard.swift in Sources */,
 				04938EA12659EB9C00DA11FF /* Color.swift in Sources */,
 				040CDDFF2659FB9F00E7E090 /* Tab1VC.swift in Sources */,
 			);
