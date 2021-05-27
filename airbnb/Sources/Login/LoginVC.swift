@@ -328,6 +328,7 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
     // MARK: 액션
     @IBAction func touchLoginWithEmail(_ sender: Any) {
         showEmailContainer()
+        phoneNumTextField.resignFirstResponder()
     }
     @IBAction func googleLoginAction(_ sender: Any) {
         googleLogin()
