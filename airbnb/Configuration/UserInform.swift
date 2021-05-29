@@ -7,8 +7,8 @@
 
 
 struct UserInform {
-    static var country: String = String()
-    static var countryNum: Int = Int()
+    static var country: String = "대한민국"
+    static var countryNum: Int = 82
     static var firstName: String = ""
     static var lastName: String = ""
     static var fullName: String = makeFullname()
@@ -16,15 +16,15 @@ struct UserInform {
     static var email: String = String()
     static var isLogin: Bool = false
     static var marketingAgree: Bool = true
-    static var password: String = String()
-    
+    static var password: String = ""
+    static var birthDay: String = ""
     
 }
 func makeFullname() -> String {
     if UserInform.countryNum == 82 {
         return "\(UserInform.lastName)\(UserInform.firstName)"
     } else {
-        return "\(UserInform.firstName)\(UserInform.lastName)"
+        return "\(UserInform.firstName) \(UserInform.lastName)"
     }
 }
 //

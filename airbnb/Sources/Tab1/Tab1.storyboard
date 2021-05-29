@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Tab1-->
+        <!--Tab1VC-->
         <scene sceneID="s0d-6b-0kx">
             <objects>
-                <viewController title="Tab1" id="Y6W-OH-hqX" customClass="Tab1VC" customModule="airbnb" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Tab1" title="Tab1VC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Y6W-OH-hqX" customClass="Tab1VC" customModule="airbnb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -46,12 +46,12 @@
                 <viewControllerPlaceholder storyboardName="Login" id="fHK-si-rmx" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VE5-uF-gly" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1550" y="0.0"/>
+            <point key="canvasLocation" x="1562" y="1"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="2D9-le-rsq">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="ram-zL-xth" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="tab1Navi" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ram-zL-xth" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="F1A-GM-hVM">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>

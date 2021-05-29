@@ -6,16 +6,20 @@
 //
 
 import UIKit
+import SnapKit
 
-class RegistrationViewController: UIViewController {
+class RegistrationViewController: BaseViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         regiConfig()
+
     }
     
-    // MARK: - 변수
+    // MARK: - 프로퍼티
     var isCheck = false
     var isPickerShowed = false
+    var isSecure = true
+    var isSecurityFailShowed = true
     
     // MARK: - 아웃렛
     @IBOutlet weak var firstNameTextFieldOutlet: UITextField!
@@ -30,9 +34,20 @@ class RegistrationViewController: UIViewController {
     
 
     @IBOutlet weak var datePickerView: UIView!
+    @IBOutlet weak var securityView: UIView!
+    @IBOutlet weak var bottomAlertView: UIView!
     
     @IBOutlet weak var datePickerOutlet: UIDatePicker!
     
+    @IBOutlet weak var scrollView: UIScrollView!
+    
+    @IBOutlet weak var securityFail: UIImageView!
+    
+    @IBOutlet weak var PWCountValidationAspect: NSLayoutConstraint!
+    @IBOutlet weak var PWCountValidationHeight: NSLayoutConstraint!
+    @IBOutlet weak var PWLetterValidationHeight: NSLayoutConstraint!
+    @IBOutlet weak var PWLetterValidationAspect: NSLayoutConstraint!
+    @IBOutlet weak var bottomAlertTop: NSLayoutConstraint!
     
     // MARK: - 액션
     // 뒤로가기 버튼
@@ -62,13 +77,83 @@ class RegistrationViewController: UIViewController {
     
     // 비밀번호 입력 변경시
     @IBAction func passwordtextFieldChanged(_ sender: Any) {
-        UserInform.password = PWTextFieldOutlet.text!
+        
+        let text = PWTextFieldOutlet.text!
+        let countRegex = Regex.shared.checkPWCountValidation(candidate: text)
+
+        let letterRegex = Regex.shared.checkPWLetterValidation(candidate: text)
+        
+        if countRegex == true {
+            PWCountValidationHeight.priority = .required
+            
+            //super.updateViewConstraints()
+            UIViewPropertyAnimator(duration: 0.1, curve: .easeOut) {
+                self.view.layoutIfNeeded()
+            }.startAnimation()
+        } else {
+            PWCountValidationHeight.priority = .defaultLow
+            
+            //super.updateViewConstraints()
+            UIViewPropertyAnimator(duration: 0.1, curve: .easeOut) {
+                self.view.layoutIfNeeded()
+            }.startAnimation()
+        }
+        if letterRegex == true {
+            PWLetterValidationHeight.priority = .required
+            
+            //super.updateViewConstraints()
+            UIViewPropertyAnimator(duration: 0.1, curve: .easeOut) {
+                self.view.layoutIfNeeded()
+            }.startAnimation()
+        } else {
+            PWLetterValidationHeight.priority = .defaultLow
+            
+            //super.updateViewConstraints()
+            UIViewPropertyAnimator(duration: 0.1, curve: .easeOut) {
+                self.view.layoutIfNeeded()
+            }.startAnimation()
+        }
+        
+        if letterRegex && countRegex == true {
+            // 보안 좋음 보여주기
+            if isSecurityFailShowed == true {
+                UIView.animate(withDuration: 0.1) {
+                    self.securityFail.alpha = 1
+                    self.securityFail.alpha = 0
+                }
+            }
+            isSecurityFailShowed = false
+            
+            // 패스워드 저장
+            UserInform.password = PWTextFieldOutlet.text!
+        } else {
+            // 보안 낮음 보여주기
+            if isSecurityFailShowed == false {
+                UIView.animate(withDuration: 0.1) {
+                    self.securityFail.alpha = 0
+                    self.securityFail.alpha = 1
+                }
+                isSecurityFailShowed = true
+            }
+        }
+        
         print(PWTextFieldOutlet.text!)
+    }
+    
+    // 비밀번호창 표시 버튼
+    @IBAction func showPWBtn(_ sender: Any) {
+        if isSecure == true {
+            PWTextFieldOutlet.isSecureTextEntry = false
+            isSecure = false
+        } else {
+            PWTextFieldOutlet.isSecureTextEntry = true
+            isSecure = true
+        }
     }
     
     // 동의 버튼
     @IBAction func agreeBtnTouch(_ sender: Any) {
-        
+        agreeValidation()
     }
     
     // 체크 버튼
@@ -93,10 +178,21 @@ class RegistrationViewController: UIViewController {
     // 데이트피커 입력값 변화시
     @IBAction func datePickerChanged(_ sender: Any) {
         print(datePickerOutlet.date.text)
+        UserInform.birthDay = datePickerOutlet.date.text
+        birthOutlet.text = datePickerOutlet.date.text
     }
     // MARK: - 함수
     func regiConfig() {
         emailLabel.text = UserInform.email
+        
+        // 하단 경고창
+        bottomAlertView.layer.cornerRadius = 10
+        bottomAlertView.layer.shadowColor = UIColor.black.cgColor
+        bottomAlertView.layer.shadowRadius = 10
+        bottomAlertView.layer.shadowOffset = .zero
+        bottomAlertView.layer.shadowOpacity = 0.15
+        bottomAlertView.layer.shouldRasterize = true
+        
     }
     
     // 툴바뷰 생성
@@ -161,6 +257,35 @@ class RegistrationViewController: UIViewController {
         }
     }
     
+    func agreeValidation() {
+        if UserInform.firstName != "" && UserInform.lastName != "" && UserInform.birthDay != "" && UserInform.password != "" {
+            // 다음 뷰로 이동
+            
+            performSegue(withIdentifier: "goToNext", sender: nil)
+                
+            
+            
+            
+        } else {
+            // 하단경고창 팝업
+            popUpBottonAlert()
+        }
+    }
+    func popUpBottonAlert() {
+        let animator = UIViewPropertyAnimator(duration: 0.2, curve: .easeIn) {
+            self.bottomAlertTop.priority = .defaultLow
+            self.view.layoutIfNeeded()
+        }
+        let backward = UIViewPropertyAnimator(duration: 0.15, curve: .easeIn) {
+            self.bottomAlertTop.priority = .required
+            self.view.layoutIfNeeded()
+        }
+
+        animator.addCompletion { _ in
+                backward.startAnimation(afterDelay: 2)
+        }
+        animator.startAnimation()
+    }
 }
 
 // MARK: - UITextFieldDelegate
@@ -168,6 +293,14 @@ extension RegistrationViewController: UITextFieldDelegate {
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         setupTextFieldsAccessoryView(textField)
         dismissDatePicker()
+        switch textField {
+                case firstNameTextFieldOutlet:
+                    scrollView.scroll(to: .top)
+                case PWTextFieldOutlet:
+                    scrollView.scroll(to: .bottom)
+                default:
+                    break
+        }
         return true
     }
 }
@@ -188,3 +321,5 @@ extension RegistrationViewController: UIScrollViewDelegate {
         }
     }
 }
+
+

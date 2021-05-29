@@ -26,6 +26,7 @@
 		0418FB1F265A284200F368CB /* Tab3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0418FB1E265A284200F368CB /* Tab3VC.swift */; };
 		044ACE7B265E501800C6277C /* Regex.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044ACE7A265E501800C6277C /* Regex.swift */; };
 		044ACE7D265E66DF00C6277C /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044ACE7C265E66DF00C6277C /* RegistrationViewController.swift */; };
+		045F555A2661FE6C00C15703 /* RegistrationAgreementVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 045F55592661FE6C00C15703 /* RegistrationAgreementVC.swift */; };
 		0471CE6B265B18EF00546B15 /* CountryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471CE6A265B18EF00546B15 /* CountryViewController.swift */; };
 		0471CE71265BF49000546B15 /* CALayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471CE70265BF49000546B15 /* CALayer.swift */; };
 		0471CE73265CE0E900546B15 /* UserInform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0471CE72265CE0E900546B15 /* UserInform.swift */; };
@@ -47,6 +48,7 @@
 		04938EA02659EB9C00DA11FF /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E992659EB9C00DA11FF /* UINavigationBar.swift */; };
 		04938EA12659EB9C00DA11FF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E9A2659EB9C00DA11FF /* Color.swift */; };
 		04BB2C81265E090C00EF56B6 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2C80265E090C00EF56B6 /* Keyboard.swift */; };
+		04D45D0D2660849C00F80A07 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D45D0C2660849C00F80A07 /* UIScrollView.swift */; };
 		ECD254E4ECC7DF7B5509BD31 /* Pods_airbnb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43A250BA34B08E3C8CFEF9E /* Pods_airbnb.framework */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +72,7 @@
 		0418FB1E265A284200F368CB /* Tab3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tab3VC.swift; sourceTree = "<group>"; };
 		044ACE7A265E501800C6277C /* Regex.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Regex.swift; sourceTree = "<group>"; };
 		044ACE7C265E66DF00C6277C /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
+		045F55592661FE6C00C15703 /* RegistrationAgreementVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationAgreementVC.swift; sourceTree = "<group>"; };
 		0471CE6A265B18EF00546B15 /* CountryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryViewController.swift; sourceTree = "<group>"; };
 		0471CE70265BF49000546B15 /* CALayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CALayer.swift; sourceTree = "<group>"; };
 		0471CE72265CE0E900546B15 /* UserInform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInform.swift; sourceTree = "<group>"; };
@@ -90,6 +93,7 @@
 		04938E992659EB9C00DA11FF /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		04938E9A2659EB9C00DA11FF /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		04BB2C80265E090C00EF56B6 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		04D45D0C2660849C00F80A07 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		2D85B3EB4218A0AE683B21E8 /* Pods-airbnb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnb.debug.xcconfig"; path = "Target Support Files/Pods-airbnb/Pods-airbnb.debug.xcconfig"; sourceTree = "<group>"; };
 		4D9CB5C1513C45864EF64961 /* Pods-airbnb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnb.release.xcconfig"; path = "Target Support Files/Pods-airbnb/Pods-airbnb.release.xcconfig"; sourceTree = "<group>"; };
 		B43A250BA34B08E3C8CFEF9E /* Pods_airbnb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_airbnb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +155,7 @@
 				040CDE18265A1CED00E7E090 /* LoginVC.swift */,
 				0471CE6A265B18EF00546B15 /* CountryViewController.swift */,
 				044ACE7C265E66DF00C6277C /* RegistrationViewController.swift */,
+				045F55592661FE6C00C15703 /* RegistrationAgreementVC.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -253,6 +258,7 @@
 				04938E992659EB9C00DA11FF /* UINavigationBar.swift */,
 				04938E982659EB9C00DA11FF /* UIViewController.swift */,
 				0471CE70265BF49000546B15 /* CALayer.swift */,
+				04D45D0C2660849C00F80A07 /* UIScrollView.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -456,6 +462,7 @@
 				04938EA02659EB9C00DA11FF /* UINavigationBar.swift in Sources */,
 				04938E9E2659EB9C00DA11FF /* Date.swift in Sources */,
 				040CDE13265A177E00E7E090 /* Tab5VC.swift in Sources */,
+				04D45D0D2660849C00F80A07 /* UIScrollView.swift in Sources */,
 				04938E63265939E200DA11FF /* ViewController.swift in Sources */,
 				04938E5F265939E200DA11FF /* AppDelegate.swift in Sources */,
 				040CDDF32659EE7800E7E090 /* BaseViewController.swift in Sources */,
@@ -464,6 +471,7 @@
 				04938E9B2659EB9C00DA11FF /* String.swift in Sources */,
 				040CDE1E265A1D0D00E7E090 /* Map.swift in Sources */,
 				044ACE7D265E66DF00C6277C /* RegistrationViewController.swift in Sources */,
+				045F555A2661FE6C00C15703 /* RegistrationAgreementVC.swift in Sources */,
 				04938E9C2659EB9C00DA11FF /* UIFont.swift in Sources */,
 				0471CE73265CE0E900546B15 /* UserInform.swift in Sources */,
 				04938E9D2659EB9C00DA11FF /* UIButton.swift in Sources */,

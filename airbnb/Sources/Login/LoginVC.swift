@@ -200,8 +200,7 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
         } else if textField == emailTextField {
             setupTextFieldsAccessoryView(emailTextField)
         }
-            
-            return true
+        return true
     }
     
     // 툴바뷰 생성
