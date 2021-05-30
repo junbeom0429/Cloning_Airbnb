@@ -47,6 +47,10 @@
 		04938E9F2659EB9C00DA11FF /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E982659EB9C00DA11FF /* UIViewController.swift */; };
 		04938EA02659EB9C00DA11FF /* UINavigationBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E992659EB9C00DA11FF /* UINavigationBar.swift */; };
 		04938EA12659EB9C00DA11FF /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E9A2659EB9C00DA11FF /* Color.swift */; };
+		04ACCBD62663CFE8006642B6 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBD52663CFE8006642B6 /* ProfileViewController.swift */; };
+		04ACCBD82663D000006642B6 /* PersonalInformViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBD72663D000006642B6 /* PersonalInformViewController.swift */; };
+		04ACCBDA2663D00D006642B6 /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBD92663D00D006642B6 /* PaymentViewController.swift */; };
+		04ACCBDC2663D023006642B6 /* NotiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBDB2663D023006642B6 /* NotiViewController.swift */; };
 		04BB2C81265E090C00EF56B6 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2C80265E090C00EF56B6 /* Keyboard.swift */; };
 		04D45D0D2660849C00F80A07 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D45D0C2660849C00F80A07 /* UIScrollView.swift */; };
 		ECD254E4ECC7DF7B5509BD31 /* Pods_airbnb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43A250BA34B08E3C8CFEF9E /* Pods_airbnb.framework */; };
@@ -92,6 +96,10 @@
 		04938E982659EB9C00DA11FF /* UIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		04938E992659EB9C00DA11FF /* UINavigationBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UINavigationBar.swift; sourceTree = "<group>"; };
 		04938E9A2659EB9C00DA11FF /* Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		04ACCBD52663CFE8006642B6 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		04ACCBD72663D000006642B6 /* PersonalInformViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalInformViewController.swift; sourceTree = "<group>"; };
+		04ACCBD92663D00D006642B6 /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
+		04ACCBDB2663D023006642B6 /* NotiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotiViewController.swift; sourceTree = "<group>"; };
 		04BB2C80265E090C00EF56B6 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		04D45D0C2660849C00F80A07 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		2D85B3EB4218A0AE683B21E8 /* Pods-airbnb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnb.debug.xcconfig"; path = "Target Support Files/Pods-airbnb/Pods-airbnb.debug.xcconfig"; sourceTree = "<group>"; };
@@ -144,6 +152,10 @@
 			children = (
 				040CDE10265A177500E7E090 /* Tab5.storyboard */,
 				040CDE12265A177E00E7E090 /* Tab5VC.swift */,
+				04ACCBD52663CFE8006642B6 /* ProfileViewController.swift */,
+				04ACCBD72663D000006642B6 /* PersonalInformViewController.swift */,
+				04ACCBD92663D00D006642B6 /* PaymentViewController.swift */,
+				04ACCBDB2663D023006642B6 /* NotiViewController.swift */,
 			);
 			path = Tab5;
 			sourceTree = "<group>";
@@ -465,15 +477,19 @@
 				04D45D0D2660849C00F80A07 /* UIScrollView.swift in Sources */,
 				04938E63265939E200DA11FF /* ViewController.swift in Sources */,
 				04938E5F265939E200DA11FF /* AppDelegate.swift in Sources */,
+				04ACCBDC2663D023006642B6 /* NotiViewController.swift in Sources */,
 				040CDDF32659EE7800E7E090 /* BaseViewController.swift in Sources */,
 				040CDE0F265A176B00E7E090 /* Tab4VC.swift in Sources */,
 				0471CE6B265B18EF00546B15 /* CountryViewController.swift in Sources */,
 				04938E9B2659EB9C00DA11FF /* String.swift in Sources */,
+				04ACCBD62663CFE8006642B6 /* ProfileViewController.swift in Sources */,
 				040CDE1E265A1D0D00E7E090 /* Map.swift in Sources */,
 				044ACE7D265E66DF00C6277C /* RegistrationViewController.swift in Sources */,
 				045F555A2661FE6C00C15703 /* RegistrationAgreementVC.swift in Sources */,
 				04938E9C2659EB9C00DA11FF /* UIFont.swift in Sources */,
+				04ACCBD82663D000006642B6 /* PersonalInformViewController.swift in Sources */,
 				0471CE73265CE0E900546B15 /* UserInform.swift in Sources */,
+				04ACCBDA2663D00D006642B6 /* PaymentViewController.swift in Sources */,
 				04938E9D2659EB9C00DA11FF /* UIButton.swift in Sources */,
 				04938E61265939E200DA11FF /* SceneDelegate.swift in Sources */,
 				0418FB1A265A279A00F368CB /* Tab2VC.swift in Sources */,
