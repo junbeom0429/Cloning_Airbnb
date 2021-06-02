@@ -13,13 +13,18 @@ class Section2VC: BaseViewController {
         config()
     }
     // MARK: - 프로퍼티
-    
+    struct ThemeStruct {
+        var image: UIImage
+        var title: String
+    }
+    let theme: [ThemeStruct] = [
+        ThemeStruct(image: UIImage(named: "tap1Sec2Item3.png")!, title: "집전체"),
+        ThemeStruct(image: UIImage(named: "tap1Sec2Item2.png")!, title: "독특한 공간"),
+        ThemeStruct(image: UIImage(named: "tap1Sec2Item4.png")!, title: "반려동물 동반 가능")
+    ]
     // MARK: - 아웃렛
     @IBOutlet weak var collectionView: UICollectionView!
     
-    
-    
-
     // MARK: - 액션
     
     // MARK: - 함수
@@ -53,11 +58,13 @@ extension Section2VC: UICollectionViewDelegate {
 // MARK: - UICollectionViewDataSource
 extension Section2VC: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        3
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? Section2CollectionViewCell else { return UICollectionViewCell() }
+        cell.section2Image.image = theme[indexPath.row].image
+        cell.section2Label.text = theme[indexPath.row].title
         
         return cell
     }
