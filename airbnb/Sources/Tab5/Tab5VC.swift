@@ -14,6 +14,15 @@ protocol Tab5TableViewVCellDelegate {
 class Tab5VC: BaseViewController {
     override func viewDidLoad() {
        config()
+        print("viewDidLoad")
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewWillAppear")
+        
+        // 이미지뷰 업데이트
+        guard let PI = UserDefaults.standard.value(forKey: UserDefaultKeyValue.profileImage) as? Data else {return}
+        let image = UIImage(data: PI as Data)
+        profileImage.image = image
     }
     // MARK: - 프로퍼티
     let headerTitle = [
@@ -49,14 +58,18 @@ class Tab5VC: BaseViewController {
     
     // MARK: - 액션
     @IBAction func profileTouch(_ sender: Any) {
-        performSegue(withIdentifier: ProfileViewController.identifier, sender: nil)
+        performSegue(withIdentifier: PersonalInformViewController.identifier, sender: nil)
     }
     
     // MARK: - 함수
     func config() {
+        
+        profileName.text = UserDefaults.standard.value(forKey: UserDefaultKeyValue.firstName) as? String
+        
         profileLabel.textColor = UIColor.mainEmerald
         profileImage.layer.cornerRadius = profileImage.frame.height / 2
         self.navigationController?.navigationBar.isTransparent = true
+        
     }
 }
 
@@ -100,7 +113,7 @@ extension Tab5VC: UITableViewDataSource {
         return cell
     }
     
-    // Header
+    // Section
     func numberOfSections(in tableView: UITableView) -> Int {
         return headerTitle.count
     }

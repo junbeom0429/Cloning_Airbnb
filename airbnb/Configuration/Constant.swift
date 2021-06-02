@@ -8,6 +8,8 @@
 import Alamofire
 
 struct Constant {
+    static let loginMainURL = "https://www.devel-airbnb.shop/app/users/login"
+    static let tempPassword = "qwer123$"
     static let googleOAuth = "186497991722-ts2ubj7gaf851vfv8b3vcnqjq0g5p5mf.apps.googleusercontent.com"
     
     static let countryList: [String:Int] = [

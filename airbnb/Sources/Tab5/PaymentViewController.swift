@@ -7,7 +7,7 @@
 
 import UIKit
 
-class PaymentViewController: UIViewController {
+class PaymentViewController: BaseViewController {
     static var shared = PaymentViewController()
     static var identifier = "goToPayment"
     override func viewDidLoad() {

@@ -303,6 +303,13 @@ extension RegistrationViewController: UITextFieldDelegate {
         }
         return true
     }
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        PWTextFieldOutlet.resignFirstResponder()
+        firstNameTextFieldOutlet.resignFirstResponder()
+        lastNameTextFieldOutlet.resignFirstResponder()
+        birthOutlet.resignFirstResponder()
+        return true
+    }
 }
 
 // MARK: - UIGestureRecognizerDelegate

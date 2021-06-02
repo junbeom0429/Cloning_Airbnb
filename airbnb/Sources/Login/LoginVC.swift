@@ -21,7 +21,6 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
         //키보드 노티피케이션
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(adjustInputView), name: UIResponder.keyboardWillHideNotification, object: nil)
-        
     }
     
     // 뷰 bottom constant
@@ -54,6 +53,7 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
     var showedHighlightView = UIView()
     var ismoved = false
     
+    var code = Int()
     // 아웃렛
     @IBOutlet weak var signUpContainer: UIView!
     @IBOutlet weak var countryView: UIView!
@@ -168,8 +168,28 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
             btn.reloadInputViews()
         }
     }
+    // MARK: - DataManager
+    func successLogin(_ jwt: Jwt) {
+        
+    }
+    func successResquest(_ code: Int) {
+        self.code = code
+        if code == 3100 {
+            print("3100")
+            performSegue(withIdentifier: "goToRegi", sender: nil)
+            
+        } else if code == 2505 {
+            print("2505")
+            self.performSegue(withIdentifier: "goToPassword", sender: nil)
+        }
+        
+        
+    }
     
-    // MARK: Textfield Delegate
+    func failureResquest() {
+        
+    }
+    // MARK: - Textfield Delegate
     // 입력된 스트링 확인
     func textFieldDidChangeSelection(_ textField: UITextField) {
         print(textField.text!)
@@ -183,16 +203,22 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
                 changeCountinueBtnActivityStatus(false, btn: ContinueBtn)
             }
         } else if textField == emailTextField {
-            let inputNum = textField.text!
-            let isRegex = Regex.shared.isEmail(candidate: inputNum)
+            let inputEmail = textField.text!
+            let isRegex = Regex.shared.isEmail(candidate: inputEmail)
             if isRegex == true {
                 changeCountinueBtnActivityStatus(true, btn: emailContinueBtn)
+                let email = emailTextField.text!
+                UserInform.email = email
             } else {
                 changeCountinueBtnActivityStatus(false, btn: emailContinueBtn)
             }
         }
     }
-    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        emailTextField.resignFirstResponder()
+        phoneNumTextField.resignFirstResponder()
+        return true
+    }
     // 키보드 위에 툴바뷰 붙이기
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         if textField == phoneNumTextField {
@@ -257,10 +283,15 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
         showEmailHighlight(highlight: highlightView3)
         emailTextField.becomeFirstResponder()
     }
+    // 이메일뷰 계속버튼
     @IBAction func emailContinueBtnAction(_ sender: Any) {
         emailTextField.resignFirstResponder()
-        UserInform.email = emailTextField.text!
-        performSegue(withIdentifier: "goToRegi", sender: self)
+        
+        
+        let request: LoginRequest = LoginRequest(email: UserInform.email, password: Constant.tempPassword)
+        LoginDataManager().loginWithEmail(request, viewController: LoginVC())
+//        self.performSegue(withIdentifier: "goToRegi", sender: self)
+        
     }
     
     

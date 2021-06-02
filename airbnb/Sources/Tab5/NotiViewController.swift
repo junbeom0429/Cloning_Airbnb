@@ -7,7 +7,7 @@
 
 import UIKit
 
-class NotiViewController: UIViewController {
+class NotiViewController: BaseViewController {
     static var shared = NotiViewController()
     static var identifier = "goToNoti"
     override func viewDidLoad() {

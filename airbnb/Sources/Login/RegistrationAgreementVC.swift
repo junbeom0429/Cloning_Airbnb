@@ -25,6 +25,16 @@ class RegistrationAgreementVC: BaseViewController {
     
     @IBAction func completeBtnTouch(_ sender: Any) {
         UserInform.isLogin = true
+        
+        UserDefaults.standard.set(UserInform.firstName, forKey: UserDefaultKeyValue.firstName)
+        UserDefaults.standard.set(UserInform.lastName, forKey: UserDefaultKeyValue.lastName)
+        UserDefaults.standard.set(UserInform.email, forKey: UserDefaultKeyValue.email)
+        UserDefaults.standard.set(UserInform.birthDay, forKey: UserDefaultKeyValue.birthDay)
+        UserDefaults.standard.set(UserInform.password, forKey: UserDefaultKeyValue.password)
+        let image = UIImage(named: "defaultUserImage.png")
+        let img = image?.pngData()
+        UserDefaults.standard.set(img, forKey: UserDefaultKeyValue.profileImage)
+        
         let main = UIStoryboard.init(name: "Main", bundle: nil)
         let tab = main.instantiateInitialViewController()
         self.view.window?.rootViewController?.dismiss(animated: false, completion: {

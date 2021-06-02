@@ -7,8 +7,9 @@
 
 import UIKit
 
-// MARK: UIButton 내에 Indicator 표시
+
 extension UIButton {
+    // MARK: UIButton 내에 Indicator 표시
     func showIndicator() {
         let indicator = UIActivityIndicatorView()
         let buttonHeight = self.bounds.size.height
@@ -25,5 +26,28 @@ extension UIButton {
                 indicator.removeFromSuperview()
             }
         }
+    }
+    
+    func pulsate() {
+        let pulse = CASpringAnimation(keyPath: "transform.scale")
+        pulse.duration = 0.3
+        pulse.fromValue = 1
+        pulse.toValue = 0.98
+        pulse.autoreverses = true
+//        pulse.repeatCount = 0
+        pulse.initialVelocity = 0.5
+//        pulse.damping = 1.0
+        layer.add(pulse, forKey: nil)
+    }
+    
+    func flash() {
+        let flash = CABasicAnimation(keyPath: "opacity")
+        flash.duration = 0.3
+        flash.fromValue = 1
+        flash.toValue = 0.1
+        flash.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
+        flash.autoreverses = true
+        flash.repeatCount = 2
+        layer.add(flash, forKey: nil)
     }
 }
