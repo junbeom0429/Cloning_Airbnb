@@ -9,5 +9,6 @@ target 'airbnb' do
 
   pod 'GoogleSignIn'
   pod 'FBSDKLoginKit'
-
+  pod 'GoogleMaps', '5.0.0'
+  
 end

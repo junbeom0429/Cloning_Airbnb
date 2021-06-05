@@ -90,7 +90,6 @@ class ChooseDateVC: BaseViewController {
                 print("dayValue: \(dayValue)")
             } else {
                 addEnd(index: dayIndex,day: dayValue)
-                
                 addBetween()
                 btnActiveSwitch()
             }

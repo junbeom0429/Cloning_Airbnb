@@ -55,6 +55,7 @@ extension SearchVC: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //SearchInform.text = list[indexPath.row]
         performSegue(withIdentifier: "goToType", sender: nil)
+        
     }
 }
 

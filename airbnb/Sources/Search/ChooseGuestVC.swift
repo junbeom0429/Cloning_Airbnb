@@ -16,7 +16,9 @@ class ChooseGuestVC: UIViewController {
     var adultNum = Int()
     var childNum = Int()
     var babyNum = Int()
-    var guestNum = Int()
+    var guestNum: Int = 0 { didSet {
+        SearchBtnActiveSwitch()
+    }}
     
     // MARK: - 아웃렛
     @IBOutlet weak var HeadSearchTextOutlet: UILabel!
@@ -69,7 +71,10 @@ class ChooseGuestVC: UIViewController {
     }
     
     @IBAction func searchBtnTouch(_ sender: UIButton) {
-        
+        // 서버통신 추가 필요
+        setSearchData()
+        //
+        goToMap()
     }
     
     
@@ -170,6 +175,16 @@ class ChooseGuestVC: UIViewController {
         }
     }
     
+    func SearchBtnActiveSwitch() {
+        if guestNum == 0 {
+            searchBtn.isEnabled = false
+            searchBtn.backgroundColor = .lightGray
+        } else {
+            searchBtn.isEnabled = true
+            searchBtn.backgroundColor = .black
+        }
+    }
+    
     func calcGuestNum() -> Int {
         guestNum = adultNum + childNum + babyNum
         return guestNum
@@ -190,10 +205,19 @@ class ChooseGuestVC: UIViewController {
     }
     
     func setSearchData() -> SearchRequest {
-        let sD = Date.init(year: 2021, month: 6, day: SearchInform.startDay)
-        let eD = Date.init(year: 2021, month: 6, day: SearchInform.endDay)
+//        let sD = Date.init(year: 2021, month: 6, day: SearchInform.startDay)
+//        let eD = Date.init(year: 2021, month: 6, day: SearchInform.endDay)
+        let sD: String = "2021-06-\(SearchInform.startDay)"
+        let eD: String = "2021-06-\(SearchInform.endDay)"
         let searchRequest = SearchRequest(state: SearchInform.text, startDate: sD, endDate: eD, guest: SearchInform.guest)
         return searchRequest
     }
     
+    func goToMap() {
+        let sb = UIStoryboard(name: "Map", bundle: nil)
+        guard let vc = sb.instantiateInitialViewController() as? MapViewController else {return}
+        vc.modalPresentationStyle = .fullScreen
+        vc.modalTransitionStyle = .crossDissolve
+        present(vc, animated: true, completion: nil)
+    }
 }

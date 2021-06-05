@@ -28,7 +28,7 @@ extension CountryViewController: UITableViewDelegate {
         
         if let vc = self.presentingViewController as? LoginVC {
             vc.countryInfoLabel.text = "\(UserInform.country) (+\(UserInform.countryNum))"
-            print("label: ", vc.countryInfoLabel.text!)
+            print("label: \(vc.countryInfoLabel.text!)")
         }
         dismiss(animated: true, completion: nil)
         

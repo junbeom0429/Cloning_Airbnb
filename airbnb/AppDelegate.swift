@@ -8,6 +8,7 @@
 import UIKit
 import GoogleSignIn
 import FBSDKCoreKit
+import GoogleMaps
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
@@ -66,15 +67,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, GIDSignInDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
-        // 구글
+        // 구글 로그인
         GIDSignIn.sharedInstance().clientID = "186497991722-ts2ubj7gaf851vfv8b3vcnqjq0g5p5mf.apps.googleusercontent.com"
         GIDSignIn.sharedInstance()?.delegate = self
         
-        // 페이스북
+        // 구글 맵
+        GMSServices.provideAPIKey("\(Constant.googleMapAPIKey)")
+        
+        // 페이스북 로그인
         ApplicationDelegate.shared.application(
                     application,
                     didFinishLaunchingWithOptions: launchOptions
                 )
+        
         return true
     }
     func applicationDidBecomeActive(_ application: UIApplication) {

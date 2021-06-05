@@ -9,6 +9,15 @@ import UIKit
 
 class Tab1VC: BaseViewController {
     override func viewDidLoad() {
+        print("tab1 viewDidLoad")
+        
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        print("tab1 viewWillAppear")
+        
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        print("tab1 viewDidAppear")
         suggestLogin()
     }
     // MARK: - 프로퍼티
@@ -16,8 +25,6 @@ class Tab1VC: BaseViewController {
     
     // MARK: - 아웃렛
     @IBOutlet weak var wishListItemBtnOutlet: UIButton!
-    
-    
     
     // MARK: - 액션
     @IBAction func wishListItemBtnTouch(_ sender: UIButton) {
@@ -35,9 +42,13 @@ class Tab1VC: BaseViewController {
     }
     
     func suggestLogin() {
-        if UserInform.isLogin == false {
+        if UserInform.isLogin == false && Flag.loginFlag == false {
             performSegue(withIdentifier: "tab1ToLogin", sender: self)
+            Flag.loginFlag = true
         }
+        
+        
+        
     }
 }
 

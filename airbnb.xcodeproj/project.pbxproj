@@ -36,6 +36,9 @@
 		047C3C312668F0D400498755 /* SearchInform.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C3C302668F0D400498755 /* SearchInform.swift */; };
 		047C3C39266A582000498755 /* SearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C3C38266A582000498755 /* SearchResponse.swift */; };
 		047C3C3B266A622200498755 /* SearchDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C3C3A266A622200498755 /* SearchDataManager.swift */; };
+		047C3C3D266B3F6C00498755 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C3C3C266B3F6C00498755 /* Flag.swift */; };
+		047C3C42266BB71F00498755 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047C3C41266BB71F00498755 /* Map.storyboard */; };
+		047C3C44266BB73600498755 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C3C43266BB73600498755 /* MapViewController.swift */; };
 		04938E5F265939E200DA11FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E5E265939E200DA11FF /* AppDelegate.swift */; };
 		04938E61265939E200DA11FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E60265939E200DA11FF /* SceneDelegate.swift */; };
 		04938E63265939E200DA11FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E62265939E200DA11FF /* ViewController.swift */; };
@@ -98,6 +101,9 @@
 		047C3C302668F0D400498755 /* SearchInform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchInform.swift; sourceTree = "<group>"; };
 		047C3C38266A582000498755 /* SearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResponse.swift; sourceTree = "<group>"; };
 		047C3C3A266A622200498755 /* SearchDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchDataManager.swift; sourceTree = "<group>"; };
+		047C3C3C266B3F6C00498755 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
+		047C3C41266BB71F00498755 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
+		047C3C43266BB73600498755 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		04938E5B265939E200DA11FF /* airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04938E5E265939E200DA11FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04938E60265939E200DA11FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -151,6 +157,7 @@
 			children = (
 				04938E64265939E200DA11FF /* Main.storyboard */,
 				04938E62265939E200DA11FF /* ViewController.swift */,
+				047C3C3E266BB6F300498755 /* Map */,
 				040CDE14265A1C3B00E7E090 /* Login */,
 				040CDE15265A1C7300E7E090 /* Search */,
 				04938E7826593A4C00DA11FF /* Tab1 */,
@@ -246,6 +253,31 @@
 			path = DataManager;
 			sourceTree = "<group>";
 		};
+		047C3C3E266BB6F300498755 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				047C3C40266BB70500498755 /* MapDataManager */,
+				047C3C3F266BB6FB00498755 /* Entity */,
+				047C3C41266BB71F00498755 /* Map.storyboard */,
+				047C3C43266BB73600498755 /* MapViewController.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		047C3C3F266BB6FB00498755 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		047C3C40266BB70500498755 /* MapDataManager */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MapDataManager;
+			sourceTree = "<group>";
+		};
 		04938E52265939E200DA11FF = {
 			isa = PBXGroup;
 			children = (
@@ -284,6 +316,7 @@
 				04938E7B26593AA000DA11FF /* Constant.swift */,
 				0471CE72265CE0E900546B15 /* UserInform.swift */,
 				047C3C302668F0D400498755 /* SearchInform.swift */,
+				047C3C3C266B3F6C00498755 /* Flag.swift */,
 				04938E7326593A2100DA11FF /* Secret */,
 				04938E7426593A2900DA11FF /* Font */,
 				04938E7526593A2F00DA11FF /* Extension */,
@@ -465,6 +498,7 @@
 				040CDDFD2659FAD800E7E090 /* Tab1.storyboard in Resources */,
 				040CDE1C265A1D0300E7E090 /* Search.storyboard in Resources */,
 				04938E68265939E500DA11FF /* Assets.xcassets in Resources */,
+				047C3C42266BB71F00498755 /* Map.storyboard in Resources */,
 				0418FB18265A279000F368CB /* Tab2.storyboard in Resources */,
 				040CDE17265A1CE000E7E090 /* Login.storyboard in Resources */,
 				04938E66265939E200DA11FF /* Main.storyboard in Resources */,
@@ -546,6 +580,7 @@
 				040CDE13265A177E00E7E090 /* Tab5VC.swift in Sources */,
 				04D45D0D2660849C00F80A07 /* UIScrollView.swift in Sources */,
 				04ACCBEA2667D482006642B6 /* Section2VC.swift in Sources */,
+				047C3C3D266B3F6C00498755 /* Flag.swift in Sources */,
 				04938E63265939E200DA11FF /* ViewController.swift in Sources */,
 				04938E5F265939E200DA11FF /* AppDelegate.swift in Sources */,
 				04ACCBDC2663D023006642B6 /* NotiViewController.swift in Sources */,
@@ -580,6 +615,7 @@
 				04BB2C81265E090C00EF56B6 /* Keyboard.swift in Sources */,
 				04ACCBE6266647A5006642B6 /* PasswordViewController.swift in Sources */,
 				04938EA12659EB9C00DA11FF /* Color.swift in Sources */,
+				047C3C44266BB73600498755 /* MapViewController.swift in Sources */,
 				040CDDFF2659FB9F00E7E090 /* Tab1VC.swift in Sources */,
 				044ACE7B265E501800C6277C /* Regex.swift in Sources */,
 			);

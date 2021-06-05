@@ -11,6 +11,7 @@ struct Constant {
     static let loginMainURL = "https://www.devel-airbnb.shop/app/users/login"
     static let tempPassword = "qwer123$"
     static let googleOAuth = "186497991722-ts2ubj7gaf851vfv8b3vcnqjq0g5p5mf.apps.googleusercontent.com"
+    static let googleMapAPIKey = "AIzaSyCD2vaVLJZ3uiA4J4VRT5NbpDw4SiMYK9o"
     
     static let countryList: [String:Int] = [
         "가나": 233,

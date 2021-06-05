@@ -9,8 +9,8 @@ import Foundation
 
 struct SearchRequest: Encodable {
     var state: String
-    var startDate: Date
-    var endDate: Date
+    var startDate: String
+    var endDate: String
     var guest: Int
 }
 
