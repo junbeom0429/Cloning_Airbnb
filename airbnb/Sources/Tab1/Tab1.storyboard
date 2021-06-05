@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Y6W-OH-hqX">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="18122" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zHe-Uv-fvV">
     <device id="retina6_0" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
@@ -29,6 +29,9 @@
                                     </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9zu-gT-fnj">
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="70"/>
+                                        <connections>
+                                            <segue destination="HWh-8U-vji" kind="show" id="SIA-A3-u2J"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -53,7 +56,7 @@
                                                 <rect key="frame" x="0.0" y="0.0" width="414" height="497"/>
                                                 <subviews>
                                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="tab1BG" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rbq-5g-Ow9">
-                                                        <rect key="frame" x="0.0" y="2190" width="414" height="0.0"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="414" height="497"/>
                                                     </imageView>
                                                 </subviews>
                                                 <color key="backgroundColor" systemColor="systemGreenColor"/>
@@ -83,7 +86,7 @@
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sDr-yx-UBf" userLabel="Section1Body">
-                                                <rect key="frame" x="0.0" y="557" width="414" height="221"/>
+                                                <rect key="frame" x="0.0" y="557" width="414" height="220.66666666666663"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="sDr-yx-UBf" secondAttribute="height" multiplier="15:8" id="cGt-Df-yah"/>
                                                 </constraints>
@@ -111,7 +114,7 @@
                                                 </constraints>
                                             </view>
                                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Sxl-WD-aJn" userLabel="Section2Body">
-                                                <rect key="frame" x="0.0" y="838" width="414" height="331"/>
+                                                <rect key="frame" x="0.0" y="837.66666666666663" width="414" height="331.33333333333337"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" secondItem="Sxl-WD-aJn" secondAttribute="height" multiplier="15:12" id="hQC-Ej-6UF"/>
                                                 </constraints>
@@ -304,7 +307,6 @@
                             <constraint firstItem="rbq-5g-Ow9" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" constant="70" id="rAZ-hw-T0A"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="TapSearch1" selectedImage="TapSearch2" id="Jzz-C5-e5G"/>
                     <navigationItem key="navigationItem" id="Vhk-HT-kTh">
                         <nil key="title"/>
                     </navigationItem>
@@ -317,12 +319,24 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="968" y="-219"/>
+            <point key="canvasLocation" x="1896.9230769230769" y="-219.66824644549763"/>
+        </scene>
+        <!--Search-->
+        <scene sceneID="CFB-tK-i9p">
+            <objects>
+                <viewControllerPlaceholder storyboardIdentifier="Search" storyboardName="Search" id="HWh-8U-vji" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="Kgc-Y3-drh"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Mrx-wn-jS0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="925" y="-643"/>
         </scene>
         <!--Login-->
         <scene sceneID="kBa-WM-H1f">
             <objects>
-                <viewControllerPlaceholder storyboardName="Login" id="fHK-si-rmx" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="Login" id="fHK-si-rmx" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="dKg-lz-cZe"/>
+                </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="VE5-uF-gly" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1495" y="-728"/>
@@ -332,11 +346,11 @@
             <objects>
                 <viewController id="h8k-dY-QK8" customClass="Section1VC" customModule="airbnb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yM0-ow-SRB">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="220.66666666666666"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="psW-k8-ewC">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="221"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="220.66666666666666"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="100" minimumInteritemSpacing="150" id="SpC-MA-gE8">
                                     <size key="itemSize" width="220" height="190"/>
@@ -346,7 +360,7 @@
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="jOC-3U-69z" customClass="Section1CollectionViewCell" customModule="airbnb" customModuleProvider="target">
-                                        <rect key="frame" x="25" y="15.666666666666666" width="220" height="190"/>
+                                        <rect key="frame" x="25" y="15.333333333333334" width="220" height="190"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="Jco-NS-3M3">
                                             <rect key="frame" x="0.0" y="0.0" width="220" height="190"/>
@@ -477,6 +491,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="3vR-6O-iXl"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="psW-k8-ewC" secondAttribute="trailing" id="6Ps-1h-1mP"/>
@@ -491,18 +506,18 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mm8-No-c8C" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1748" y="-575"/>
+            <point key="canvasLocation" x="2676.9230769230767" y="-575.47393364928905"/>
         </scene>
         <!--Section2VC-->
         <scene sceneID="KlQ-MT-D0I">
             <objects>
                 <viewController id="2Bc-ta-ki5" customClass="Section2VC" customModule="airbnb" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="yxa-Cm-1NT">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="331.33333333333331"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceHorizontal="YES" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" bouncesZoom="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="q7u-Ng-Ybq">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="331"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="331.33333333333331"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cum-C9-1Wu">
                                     <size key="itemSize" width="260" height="300"/>
@@ -560,6 +575,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="Qkq-4J-3Uf"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstAttribute="bottom" secondItem="q7u-Ng-Ybq" secondAttribute="bottom" id="6y5-L8-Xe7"/>
@@ -574,7 +590,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPf-13-RfH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747.6923076923076" y="-336.25592417061608"/>
+            <point key="canvasLocation" x="2676.9230769230767" y="-336.25592417061608"/>
         </scene>
         <!--Section3VC-->
         <scene sceneID="zFs-VJ-JxU">
@@ -658,6 +674,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="1jq-0l-hts"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="dND-Tp-bAP" firstAttribute="leading" secondItem="pG1-nI-pdh" secondAttribute="leading" id="0z1-88-sFA"/>
@@ -672,7 +689,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bey-OT-U2q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1748" y="-35"/>
+            <point key="canvasLocation" x="2676.9230769230767" y="-35.545023696682463"/>
         </scene>
         <!--Section4VC-->
         <scene sceneID="fLW-DJ-nFA">
@@ -886,6 +903,7 @@
                                 </connections>
                             </collectionView>
                         </subviews>
+                        <viewLayoutGuide key="safeArea" id="lzf-Ek-syI"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="RMv-Fk-erw" firstAttribute="leading" secondItem="mxi-IZ-J6E" secondAttribute="leading" id="1Zz-im-lg1"/>
@@ -901,6 +919,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bqn-th-nxu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1748" y="303"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="KOl-BA-Zu3">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="zHe-Uv-fvV" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="" image="TapSearch1" selectedImage="TapSearch2" id="Jzz-C5-e5G"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="v2z-Gt-xQz">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="hBr-yZ-eNJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="iOt-VX-QMr" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="967.69230769230762" y="-219.66824644549763"/>
         </scene>
     </scenes>
     <resources>

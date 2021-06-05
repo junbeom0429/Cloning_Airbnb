@@ -9,6 +9,7 @@ import UIKit
 import SnapKit
 import GoogleSignIn
 import FBSDKLoginKit
+import Alamofire
 
 class LoginVC: BaseViewController, UITextFieldDelegate {
     override func viewDidLoad() {
@@ -172,15 +173,34 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
     func successLogin(_ jwt: Jwt) {
         
     }
-    func successResquest(_ code: Int) {
+    func successRequest(_ code: Int) {
         self.code = code
         if code == 3100 {
-            print("3100")
-            performSegue(withIdentifier: "goToRegi", sender: nil)
+            print("3100 이메일 없음")
+            //changeRootViewController(RegistrationViewController())
+            let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate
+            let vc = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "LoginVC")
+            let vc2 = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(withIdentifier: <#T##String#>)
+            let pushVC = UIStoryboard(name: "Login", bundle: nil).instantiateViewController(identifier: "Regi")
+            let rV = UINavigationController(rootViewController: vc)
+            //pushVC.present
+            //let navi = vc.navigationController
+            //sceneDelegate?.window?.rootViewController = navi
+            var top = sceneDelegate?.window?.rootViewController?.navigationController?.topViewController
+            top = pushVC
+            //vc.performSegue(withIdentifier: "goToRegi", sender: nil)
+            //navi?.pushViewController(pushVC, animated: true)
+            vc.navigationController?.pushViewController(top!, animated: true)
             
+            let pushVC2 = self.storyboard?.instantiateViewController(withIdentifier: "vcStoaryBoardID")
+            self.navigationController?.pushViewController(pushVC2!, animated: true)
+            
+//            navigationController?.pushViewController(RegistrationViewController(), animated: true)
+//            pushToViewController(RegistrationViewController(), animated: true)
         } else if code == 2505 {
-            print("2505")
-            self.performSegue(withIdentifier: "goToPassword", sender: nil)
+            print("2505 이메일 존재")
+            
+//            changeRootViewController(PasswordViewController())
         }
         
         
@@ -289,7 +309,7 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
         
         
         let request: LoginRequest = LoginRequest(email: UserInform.email, password: Constant.tempPassword)
-        LoginDataManager().loginWithEmail(request, viewController: LoginVC())
+        LoginDataManager().loginWithEmail(request, delegate: LoginVC())
 //        self.performSegue(withIdentifier: "goToRegi", sender: self)
         
     }

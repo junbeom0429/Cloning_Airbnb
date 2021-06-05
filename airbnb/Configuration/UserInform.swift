@@ -13,7 +13,7 @@ struct UserInform {
     static var lastName: String = ""
     static var fullName: String = makeFullname()
     static var phoneNum: Int = Int()
-    static var email: String = String()
+    static var email: String = ""
     static var isLogin: Bool = false
     static var marketingAgree: Bool = true
     static var password: String = ""
@@ -34,7 +34,6 @@ struct UserDefaultKeyValue {
     static var birthDay = "birthDay"
     static var profileImage = "profileImage"
 }
-
 
 func makeFullname() -> String {
     if UserInform.countryNum == 82 {

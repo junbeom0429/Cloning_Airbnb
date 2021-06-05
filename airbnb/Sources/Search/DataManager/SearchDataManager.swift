@@ -1,21 +1,22 @@
 //
-//  LoginDataManager.swift
+//  SearchDataManager.swift
 //  airbnb
 //
-//  Created by JB on 2021/06/01.
+//  Created by JB on 2021/06/04.
 //
 
 import Alamofire
 
-open class LoginDataManager {
-    func loginWithEmail(_ parameters: LoginRequest, delegate: LoginVC) {
+open class SearchDataManager {
+    func search(_ parameters: SearchRequest, viewController: LoginVC) {
         AF.request(Constant.loginMainURL, method: .post, parameters: parameters, encoder: JSONParameterEncoder(), headers: nil).validate().responseDecodable(of: LoginResponse.self) { response in
             switch response.result {
             case .success(let response):
                 if response.isSuccess, let result = response.result {
-                    delegate.successLogin(result)
+                    viewController.successLogin(result)
                 } else {
-                    delegate.successRequest(response.code)
+                    
+                    viewController.successRequest(response.code)
                     switch response.code {
                     case 2505:
                         print("이메일존재")
@@ -29,8 +30,9 @@ open class LoginDataManager {
                 }
             case .failure(_):
                 print("서버연결 실패 : \(response)")
-                delegate.failureResquest()
+                viewController.failureResquest()
             }
         }
     }
 }
+
