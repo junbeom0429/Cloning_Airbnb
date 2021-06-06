@@ -44,7 +44,7 @@
                                                     <action selector="backBtn:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="2iI-M7-zyb"/>
                                                 </connections>
                                             </button>
-                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="어디로 여행가세요?" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Fo6-h1-zsA">
+                                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="어디로 여행가세요?" clearsOnBeginEditing="YES" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="Fo6-h1-zsA">
                                                 <rect key="frame" x="65" y="0.0" width="349" height="60"/>
                                                 <color key="textColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="19"/>
@@ -53,6 +53,14 @@
                                                     <outlet property="delegate" destination="Y6W-OH-hqX" id="gEa-dc-uHx"/>
                                                 </connections>
                                             </textField>
+                                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xmE-D5-Di3">
+                                                <rect key="frame" x="316" y="8" width="46" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal" title="Button"/>
+                                                <connections>
+                                                    <action selector="temp:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="0cE-My-SJP"/>
+                                                </connections>
+                                            </button>
                                         </subviews>
                                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                         <constraints>
@@ -145,6 +153,7 @@
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="XuS-Zm-ydg" firstAttribute="top" secondItem="reH-VP-ajE" secondAttribute="bottom" id="Bld-J2-eTu"/>
                             <constraint firstItem="vDu-zF-Fre" firstAttribute="trailing" secondItem="XuS-Zm-ydg" secondAttribute="trailing" id="DcN-WH-1FR"/>
@@ -1108,6 +1117,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="ljS-Ia-YO2">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="Y6W-OH-hqX" kind="relationship" relationship="rootViewController" id="tUO-sW-tvo"/>
                     </connections>

@@ -7,10 +7,14 @@
 
 import UIKit
 
-class ChooseGuestVC: UIViewController {
+
+class ChooseGuestVC: BaseViewController {
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         config()
+        
     }
     // MARK: - 프로퍼티
     var adultNum = Int()
@@ -19,6 +23,8 @@ class ChooseGuestVC: UIViewController {
     var guestNum: Int = 0 { didSet {
         SearchBtnActiveSwitch()
     }}
+    
+    
     
     // MARK: - 아웃렛
     @IBOutlet weak var HeadSearchTextOutlet: UILabel!
@@ -71,12 +77,12 @@ class ChooseGuestVC: UIViewController {
     }
     
     @IBAction func searchBtnTouch(_ sender: UIButton) {
-        // 서버통신 추가 필요
-        setSearchData()
-        //
-        goToMap()
-    }
+        dismiss(animated: false) {
+            let vc = Tab1VC()
+            vc.performSegue(withIdentifier: "goToMap", sender: nil)
+        }
     
+    }
     
     // MARK: - 함수
     func config() {
@@ -84,7 +90,7 @@ class ChooseGuestVC: UIViewController {
         containerView.layer.cornerRadius = 20
         dateOutlet.text = "6월 \(SearchInform.startDay) ~ \(SearchInform.endDay)"
         HeadSearchTextOutlet.text = SearchInform.text
-        
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     func clickMinus(_ label: UILabel) {
@@ -205,8 +211,6 @@ class ChooseGuestVC: UIViewController {
     }
     
     func setSearchData() -> SearchRequest {
-//        let sD = Date.init(year: 2021, month: 6, day: SearchInform.startDay)
-//        let eD = Date.init(year: 2021, month: 6, day: SearchInform.endDay)
         let sD: String = "2021-06-\(SearchInform.startDay)"
         let eD: String = "2021-06-\(SearchInform.endDay)"
         let searchRequest = SearchRequest(state: SearchInform.text, startDate: sD, endDate: eD, guest: SearchInform.guest)
@@ -220,4 +224,9 @@ class ChooseGuestVC: UIViewController {
         vc.modalTransitionStyle = .crossDissolve
         present(vc, animated: true, completion: nil)
     }
+    
+    func addMapTab1Navi() {
+        
+    }
+
 }

@@ -7,13 +7,14 @@
 
 import UIKit
 
-class SearchVC: BaseViewController {
+class SearchVC: BaseViewController,  UIGestureRecognizerDelegate {
     override func viewDidLoad() {
+        config()
         reset()
     }
     // MARK: - 프로퍼티
     var list: [String] = ["서울 특별시"]
-    
+    var initialTouchPoint: CGPoint = CGPoint(x: 0, y: 0)
     // MARK: - 아웃렛
     @IBOutlet weak var searchBarTextField: UITextField!
     @IBOutlet weak var naviContainer: UIView!
@@ -22,10 +23,22 @@ class SearchVC: BaseViewController {
     @IBAction func backBtn(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func temp(_ sender: Any) {
+        
+       
+        Flag.fromSearch = true
+        print("fromSearch = true")
+        dismiss(animated: false)
+    }
+    
+    
     // MARK: - 함수
     func config() {
         naviContainer.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
         naviContainer.layer.cornerRadius = 20
+        self.navigationController?.interactivePopGestureRecognizer?.delegate = self
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = false
     }
     func reset() {
         SearchInform.text = ""
@@ -34,6 +47,8 @@ class SearchVC: BaseViewController {
         SearchInform.guest = 0
         SearchInform.startDate = Date()
     }
+    
+    
 }
 
 extension SearchVC: UITextFieldDelegate {

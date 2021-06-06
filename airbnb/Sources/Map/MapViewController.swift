@@ -16,6 +16,7 @@ class MapViewController: UIViewController {
         let camera = GMSCameraPosition.camera(withLatitude: -33.86, longitude: 151.20, zoom: 6.0)
         let mapView = GMSMapView.map(withFrame: self.view.frame, camera: camera)
         self.view.addSubview(mapView)
+        view.sendSubviewToBack(mapView)
         
         // Creates a marker in the center of the map.
         let marker = GMSMarker()
@@ -27,9 +28,14 @@ class MapViewController: UIViewController {
     //MARK: - 프로퍼티
     
     //MARK: - 아웃렛
+    @IBOutlet weak var filterBtnOutlet: UIButton!
+    @IBOutlet weak var headerBarContainerOutlet: UIView!
     
     //MARK: - 액션
     
     //MARK: - 함수
-    
+    func config() {
+        filterBtnOutlet.layer.cornerRadius = 20
+        headerBarContainerOutlet.layer.cornerRadius = 20
+    }
 }

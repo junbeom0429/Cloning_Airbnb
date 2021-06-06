@@ -8,16 +8,24 @@
 import UIKit
 
 class Tab1VC: BaseViewController {
+    
+    
     override func viewDidLoad() {
         print("tab1 viewDidLoad")
         
     }
+    
     override func viewWillAppear(_ animated: Bool) {
         print("tab1 viewWillAppear")
-        
+        if Flag.fromSearch == true {
+            print("fromSearch == true")
+            performSegue(withIdentifier: "goToMap", sender: nil)
+            Flag.fromSearch = false
+        }
     }
     override func viewDidAppear(_ animated: Bool) {
         print("tab1 viewDidAppear")
+        
         suggestLogin()
     }
     // MARK: - 프로퍼티
@@ -30,6 +38,15 @@ class Tab1VC: BaseViewController {
     @IBAction func wishListItemBtnTouch(_ sender: UIButton) {
         sender.pulsate()
     }
+    
+    @IBAction func tempGoToMapBtn(_ sender: Any) {
+//        self.navigationController?.pushViewController(MapViewController(), animated: true)
+        performSegue(withIdentifier: "goToMap", sender: nil)
+    }
+    @IBAction func tempLogin(_ sender: Any) {
+        performSegue(withIdentifier: "tab1ToLogin", sender: nil)
+    }
+    
     
     @IBAction func hostItemBtnTouch(_ sender: UIButton) {
         sender.pulsate()
@@ -46,9 +63,8 @@ class Tab1VC: BaseViewController {
             performSegue(withIdentifier: "tab1ToLogin", sender: self)
             Flag.loginFlag = true
         }
-        
-        
-        
     }
+    
 }
+
 

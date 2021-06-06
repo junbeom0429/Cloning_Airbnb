@@ -28,6 +28,7 @@ class ChooseTypeVC: UIViewController {
     func config() {
         containerView.layer.cornerRadius = 20
         headSearchOutlet.text = SearchInform.text
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
 
 }

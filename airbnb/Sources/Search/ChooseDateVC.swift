@@ -45,6 +45,7 @@ class ChooseDateVC: BaseViewController {
         containerView.layer.cornerRadius = 20
         nextBtn.layer.cornerRadius = 10
         headSearchOutlet.text = SearchInform.text
+        self.navigationController?.interactivePopGestureRecognizer?.isEnabled = true
     }
     
     // 셀 초기 컨피그

@@ -9,4 +9,5 @@ import Foundation
 
 struct Flag {
     static var loginFlag: Bool = false
+    static var fromSearch: Bool = false
 }

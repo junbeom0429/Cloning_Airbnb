@@ -3,7 +3,8 @@
 //  airbnb
 //
 //  Created by JB on 2021/05/22.
-// 
+//
+// 메모: - API명세서 : https://docs.google.com/spreadsheets/d/1_6eJ68SOV5pIb5VXURitSDZvwbCBwfPgQG686uVNBME/edit#gid=1217189698
 
 import Alamofire
 
