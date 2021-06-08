@@ -18,13 +18,13 @@ struct SearchResponse: Decodable {
     var isSuccess: String
     var code: Int
     var message: String
-    var result: result
+    var result: [result]
     
 }
 struct result: Decodable {
     var idx: String
     var hostName: String
-    var hostImg: hosting
+    var hostImg: [hosting]
     var hostType: String
     var state: String
     var avaliableReservation: String

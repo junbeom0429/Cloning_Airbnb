@@ -24,18 +24,27 @@ class MapViewController: UIViewController {
         marker.title = "Sydney"
         marker.snippet = "Australia"
         marker.map = mapView
+        
+        
     }
+    
     //MARK: - 프로퍼티
     
     //MARK: - 아웃렛
     @IBOutlet weak var filterBtnOutlet: UIButton!
     @IBOutlet weak var headerBarContainerOutlet: UIView!
+    @IBOutlet weak var tableViewContainer: UIView!
     
     //MARK: - 액션
+    @IBAction func backBtn(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
     
     //MARK: - 함수
     func config() {
         filterBtnOutlet.layer.cornerRadius = 20
         headerBarContainerOutlet.layer.cornerRadius = 20
+        tableViewContainer.layer.cornerRadius = 20
+        view.insertSubview(tableViewContainer, belowSubview: headerBarContainerOutlet)
     }
 }

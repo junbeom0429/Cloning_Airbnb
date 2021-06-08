@@ -39,6 +39,7 @@
 		047C3C3D266B3F6C00498755 /* Flag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C3C3C266B3F6C00498755 /* Flag.swift */; };
 		047C3C42266BB71F00498755 /* Map.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 047C3C41266BB71F00498755 /* Map.storyboard */; };
 		047C3C44266BB73600498755 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 047C3C43266BB73600498755 /* MapViewController.swift */; };
+		048E4065266E446200CA4B3D /* TableViewInMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048E4064266E446200CA4B3D /* TableViewInMapViewController.swift */; };
 		04938E5F265939E200DA11FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E5E265939E200DA11FF /* AppDelegate.swift */; };
 		04938E61265939E200DA11FF /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E60265939E200DA11FF /* SceneDelegate.swift */; };
 		04938E63265939E200DA11FF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04938E62265939E200DA11FF /* ViewController.swift */; };
@@ -66,6 +67,7 @@
 		04ACCBEA2667D482006642B6 /* Section2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBE92667D482006642B6 /* Section2VC.swift */; };
 		04ACCBEC2667D492006642B6 /* Section3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBEB2667D492006642B6 /* Section3VC.swift */; };
 		04ACCBEE2667D4A5006642B6 /* Section4VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBED2667D4A5006642B6 /* Section4VC.swift */; };
+		04B56B22266FD2A60055DC4B /* MapResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B56B21266FD2A60055DC4B /* MapResponses.swift */; };
 		04BB2C81265E090C00EF56B6 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2C80265E090C00EF56B6 /* Keyboard.swift */; };
 		04D45D0D2660849C00F80A07 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D45D0C2660849C00F80A07 /* UIScrollView.swift */; };
 		ECD254E4ECC7DF7B5509BD31 /* Pods_airbnb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43A250BA34B08E3C8CFEF9E /* Pods_airbnb.framework */; };
@@ -104,6 +106,7 @@
 		047C3C3C266B3F6C00498755 /* Flag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Flag.swift; sourceTree = "<group>"; };
 		047C3C41266BB71F00498755 /* Map.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Map.storyboard; sourceTree = "<group>"; };
 		047C3C43266BB73600498755 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		048E4064266E446200CA4B3D /* TableViewInMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewInMapViewController.swift; sourceTree = "<group>"; };
 		04938E5B265939E200DA11FF /* airbnb.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = airbnb.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04938E5E265939E200DA11FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		04938E60265939E200DA11FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +133,7 @@
 		04ACCBE92667D482006642B6 /* Section2VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section2VC.swift; sourceTree = "<group>"; };
 		04ACCBEB2667D492006642B6 /* Section3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section3VC.swift; sourceTree = "<group>"; };
 		04ACCBED2667D4A5006642B6 /* Section4VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section4VC.swift; sourceTree = "<group>"; };
+		04B56B21266FD2A60055DC4B /* MapResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapResponses.swift; sourceTree = "<group>"; };
 		04BB2C80265E090C00EF56B6 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		04D45D0C2660849C00F80A07 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		2D85B3EB4218A0AE683B21E8 /* Pods-airbnb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnb.debug.xcconfig"; path = "Target Support Files/Pods-airbnb/Pods-airbnb.debug.xcconfig"; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 				047C3C40266BB70500498755 /* MapDataManager */,
 				047C3C3F266BB6FB00498755 /* Entity */,
 				047C3C41266BB71F00498755 /* Map.storyboard */,
+				048E4064266E446200CA4B3D /* TableViewInMapViewController.swift */,
 				047C3C43266BB73600498755 /* MapViewController.swift */,
 			);
 			path = Map;
@@ -267,6 +272,7 @@
 		047C3C3F266BB6FB00498755 /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				04B56B21266FD2A60055DC4B /* MapResponses.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -583,6 +589,7 @@
 				047C3C3D266B3F6C00498755 /* Flag.swift in Sources */,
 				04938E63265939E200DA11FF /* ViewController.swift in Sources */,
 				04938E5F265939E200DA11FF /* AppDelegate.swift in Sources */,
+				04B56B22266FD2A60055DC4B /* MapResponses.swift in Sources */,
 				04ACCBDC2663D023006642B6 /* NotiViewController.swift in Sources */,
 				040CDDF32659EE7800E7E090 /* BaseViewController.swift in Sources */,
 				040CDE0F265A176B00E7E090 /* Tab4VC.swift in Sources */,
@@ -591,6 +598,7 @@
 				04ACCBEC2667D492006642B6 /* Section3VC.swift in Sources */,
 				040CDE1E265A1D0D00E7E090 /* SearchVC.swift in Sources */,
 				044ACE7D265E66DF00C6277C /* RegistrationViewController.swift in Sources */,
+				048E4065266E446200CA4B3D /* TableViewInMapViewController.swift in Sources */,
 				04ACCBE4266638F9006642B6 /* LoginDataManager.swift in Sources */,
 				045F555A2661FE6C00C15703 /* RegistrationAgreementVC.swift in Sources */,
 				04938E9C2659EB9C00DA11FF /* UIFont.swift in Sources */,

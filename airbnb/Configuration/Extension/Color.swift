@@ -25,6 +25,7 @@ extension UIColor {
     class var borderLightGray: UIColor { UIColor(hex: 0xBFBFBF) }
     class var keyboardLightGray: UIColor {UIColor( #colorLiteral(red: 0.8381457925, green: 0.8487832546, blue: 0.8660917878, alpha: 1))}
     class var mainEmerald: UIColor {UIColor(hex: 0x107275)}
+    class var mainPink: UIColor {UIColor(hex: 0xE53C59)}
 }
 
 
