@@ -70,6 +70,8 @@
 		04B56B22266FD2A60055DC4B /* MapResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B56B21266FD2A60055DC4B /* MapResponses.swift */; };
 		04BB2C81265E090C00EF56B6 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2C80265E090C00EF56B6 /* Keyboard.swift */; };
 		04D45D0D2660849C00F80A07 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D45D0C2660849C00F80A07 /* UIScrollView.swift */; };
+		04F580CB267B3DB4001604B6 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 04F580CA267B3DB4001604B6 /* FloatingPanel */; };
+		04F580CD267B4721001604B6 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04F580CC267B4721001604B6 /* TestViewController.swift */; };
 		ECD254E4ECC7DF7B5509BD31 /* Pods_airbnb.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B43A250BA34B08E3C8CFEF9E /* Pods_airbnb.framework */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +138,7 @@
 		04B56B21266FD2A60055DC4B /* MapResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapResponses.swift; sourceTree = "<group>"; };
 		04BB2C80265E090C00EF56B6 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		04D45D0C2660849C00F80A07 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
+		04F580CC267B4721001604B6 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 		2D85B3EB4218A0AE683B21E8 /* Pods-airbnb.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnb.debug.xcconfig"; path = "Target Support Files/Pods-airbnb/Pods-airbnb.debug.xcconfig"; sourceTree = "<group>"; };
 		4D9CB5C1513C45864EF64961 /* Pods-airbnb.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-airbnb.release.xcconfig"; path = "Target Support Files/Pods-airbnb/Pods-airbnb.release.xcconfig"; sourceTree = "<group>"; };
 		B43A250BA34B08E3C8CFEF9E /* Pods_airbnb.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_airbnb.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				04938E93265947E700DA11FF /* Kingfisher in Frameworks */,
+				04F580CB267B3DB4001604B6 /* FloatingPanel in Frameworks */,
 				04938E8D265946F700DA11FF /* SnapKit in Frameworks */,
 				04938E90265947B200DA11FF /* Alamofire in Frameworks */,
 				ECD254E4ECC7DF7B5509BD31 /* Pods_airbnb.framework in Frameworks */,
@@ -263,6 +267,7 @@
 				047C3C40266BB70500498755 /* MapDataManager */,
 				047C3C3F266BB6FB00498755 /* Entity */,
 				047C3C41266BB71F00498755 /* Map.storyboard */,
+				04F580CC267B4721001604B6 /* TestViewController.swift */,
 				048E4064266E446200CA4B3D /* TableViewInMapViewController.swift */,
 				047C3C43266BB73600498755 /* MapViewController.swift */,
 			);
@@ -450,6 +455,7 @@
 				04938E8C265946F700DA11FF /* SnapKit */,
 				04938E8F265947B200DA11FF /* Alamofire */,
 				04938E92265947E700DA11FF /* Kingfisher */,
+				04F580CA267B3DB4001604B6 /* FloatingPanel */,
 			);
 			productName = airbnb;
 			productReference = 04938E5B265939E200DA11FF /* airbnb.app */;
@@ -482,6 +488,7 @@
 				04938E8B265946F700DA11FF /* XCRemoteSwiftPackageReference "SnapKit" */,
 				04938E8E265947B200DA11FF /* XCRemoteSwiftPackageReference "Alamofire" */,
 				04938E91265947E600DA11FF /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				04F580C9267B3DB4001604B6 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
 			);
 			productRefGroup = 04938E5C265939E200DA11FF /* Products */;
 			projectDirPath = "";
@@ -587,6 +594,7 @@
 				04D45D0D2660849C00F80A07 /* UIScrollView.swift in Sources */,
 				04ACCBEA2667D482006642B6 /* Section2VC.swift in Sources */,
 				047C3C3D266B3F6C00498755 /* Flag.swift in Sources */,
+				04F580CD267B4721001604B6 /* TestViewController.swift in Sources */,
 				04938E63265939E200DA11FF /* ViewController.swift in Sources */,
 				04938E5F265939E200DA11FF /* AppDelegate.swift in Sources */,
 				04B56B22266FD2A60055DC4B /* MapResponses.swift in Sources */,
@@ -855,6 +863,14 @@
 				minimumVersion = 6.3.0;
 			};
 		};
+		04F580C9267B3DB4001604B6 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/scenee/FloatingPanel";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -872,6 +888,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04938E91265947E600DA11FF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		04F580CA267B3DB4001604B6 /* FloatingPanel */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04F580C9267B3DB4001604B6 /* XCRemoteSwiftPackageReference "FloatingPanel" */;
+			productName = FloatingPanel;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

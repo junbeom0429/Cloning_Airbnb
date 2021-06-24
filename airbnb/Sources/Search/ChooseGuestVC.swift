@@ -77,10 +77,8 @@ class ChooseGuestVC: BaseViewController {
     }
     
     @IBAction func searchBtnTouch(_ sender: UIButton) {
-        dismiss(animated: false) {
-            let vc = Tab1VC()
-            vc.performSegue(withIdentifier: "goToMap", sender: nil)
-        }
+        Flag.fromSearch = true
+        dismiss(animated: false) 
     
     }
     
