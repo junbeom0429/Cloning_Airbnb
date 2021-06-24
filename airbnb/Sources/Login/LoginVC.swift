@@ -295,7 +295,7 @@ class LoginVC: BaseViewController, UITextFieldDelegate {
             }
         }
     }
-    
+    //test
     
     // MARK: 함수
     func moveEmail(target: UIView) {
