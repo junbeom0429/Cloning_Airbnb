@@ -8,11 +8,6 @@
 import UIKit
 import Kingfisher
 
-protocol PanningDelegate: AnyObject {
-    func panning(sender: UIPanGestureRecognizer)
-    func printSomething(string: String)
-}
-
 class TableViewInMapViewController: BaseViewController {
     
     override func viewDidLoad() {
@@ -20,16 +15,8 @@ class TableViewInMapViewController: BaseViewController {
         config()
     }
     // MARK: - 프로퍼티
-    weak var delegate: PanningDelegate?
     var items: [result] = []
     var numOfPages = Int()
-    var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
-    var currentPosition: Position = .middle
-    enum Position {
-        case top
-        case middle
-        case bottom
-    }
     
     // MARK: - 아웃렛
    
@@ -66,6 +53,7 @@ extension TableViewInMapViewController: UITableViewDataSource {
     
 }
 
+// MARK: - TableViewInMapCell
 class TableViewInMapCell: UITableViewCell {
     // MARK: - 프로퍼티
     var numOfPages = 0

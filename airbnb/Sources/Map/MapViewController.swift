@@ -44,24 +44,6 @@ class MapViewController: BaseViewController {
         navigationController?.popViewController(animated: true)
     }
     
-//    @IBAction func mapViewPan(_ sender: UIPanGestureRecognizer) {
-//
-//        if sender.state == .began {
-//            print("Map.state.began")
-//
-//        } else if sender.state == .changed {
-//            print("Map.state.changed")
-//            let translation = sender.translation(in: tableViewContainer)
-//
-//            self.tableViewContainer.frame = CGRect(x:tableViewContainer.frame.origin.x + translation.x, y:tableViewContainer.frame.origin.y + translation.y, width: self.tableViewContainer.frame.size.width, height: tableViewContainer.frame.size.height)
-//
-//            sender.setTranslation(CGPoint.zero, in: tableViewContainer)
-//
-//        } else if sender.state == .ended || sender.state == .cancelled {
-//            print("Map.state.ended")
-//        }
-//    }
-    
     //MARK: - 함수
     func config() {
         filterBtnOutlet.layer.cornerRadius = 20
@@ -97,32 +79,10 @@ class MapViewController: BaseViewController {
         marker.snippet = "Australia"
         marker.map = mapView
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination
-        if let tableViewController = destination as? TableViewInMapViewController {
-            tableViewInMapVC = tableViewController
-            tableViewController.delegate = self
-        }
-    }
-}
-
-// MARK: - PanningDelegate
-extension MapViewController: PanningDelegate {
-    func printSomething(string: String) {
-        print("\(string)")
-    }
-    
-    func panning(sender: UIPanGestureRecognizer) {
-        
-    }
 }
 
 // MARK: - FloatingPanelControllerDelegate
 extension MapViewController: FloatingPanelControllerDelegate {
-    
-    
-    
     
 }
 
@@ -138,38 +98,9 @@ class MyFloatingPanelLayout: FloatingPanelLayout {
             .tip: FloatingPanelLayoutAnchor(absoluteInset: 44.0, edge: .bottom, referenceGuide: .safeArea),
         ]
     }
-    
-    func backdropAlpha(for state: FloatingPanelState) -> CGFloat {
-        switch state {
-        case .full, .half:
-            return 0.7
-        default:
-            return 0
-        }
-    }
-    
-    
 }
-
+// MARK: - class CustomPanelBehavior: FloatingPanelBehavior
 class CustomPanelBehavior: FloatingPanelBehavior {
-        // Modify your floating panel's interaction
-    let springDecelerationRate = UIScrollView.DecelerationRate.fast.rawValue + 0.02
-    let springResponseTime = 0.4
-    func shouldProjectMomentum(_ fpc: FloatingPanelController,
-                to proposedTargetPosition: FloatingPanelState) -> Bool {
-        return true
-    }
-
-        // Activate the rubber-band effect on panel edges
-    func allowsRubberBanding(for edge: UIRectEdge) -> Bool {
-        return true
-    }
-        
-        // Manage the projection of a pan gesture momentum
-        func shouldProjectMomentum(_ fpc: FloatingPanelController,
-                to proposedTargetPosition: FloatingPanelPosition) -> Bool {
-        return true
-    }
     
     
 }
