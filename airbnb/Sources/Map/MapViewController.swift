@@ -24,7 +24,9 @@ class MapViewController: BaseViewController {
     //MARK: - 프로퍼티
     var fpc: FloatingPanelController!
     var tableViewInMapVC: TableViewInMapViewController!
-    
+    var mvc: MapViewController!
+    var tabvc: UITabBarController!
+
 //    var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
 //
 //    var currentPosition: Position = .middle
@@ -37,7 +39,8 @@ class MapViewController: BaseViewController {
     //MARK: - 아웃렛
     @IBOutlet weak var filterBtnOutlet: UIButton!
     @IBOutlet weak var headerBarContainerOutlet: UIView!
- 
+    @IBOutlet var mainView: UIView!
+    
     
     //MARK: - 액션
     @IBAction func backBtn(_ sender: Any) {
@@ -84,6 +87,19 @@ class MapViewController: BaseViewController {
 // MARK: - FloatingPanelControllerDelegate
 extension MapViewController: FloatingPanelControllerDelegate {
     
+    func floatingPanelWillBeginDragging(_ fpc: FloatingPanelController) {
+        if fpc.state == FloatingPanelState.tip {
+            if fpc.panGestureRecognizer.translation(in: mainView).y < 0 {
+                tabBarController?.tabBar.isHidden = false
+            }
+        } else if fpc.state == FloatingPanelState.half {
+            if fpc.panGestureRecognizer.translation(in: mainView).y < 0 {
+                tabBarController?.tabBar.isHidden = false
+            } else {
+                tabBarController?.tabBar.isHidden = true
+            }
+        }
+    }
 }
 
 // MARK: - class MyFloatingPanelLayout: FloatingPanelLayout
@@ -91,6 +107,7 @@ extension MapViewController: FloatingPanelControllerDelegate {
 class MyFloatingPanelLayout: FloatingPanelLayout {
     let position: FloatingPanelPosition = .bottom
     let initialState: FloatingPanelState = .half
+    
     var anchors: [FloatingPanelState: FloatingPanelLayoutAnchoring] {
         return [
             .full: FloatingPanelLayoutAnchor(absoluteInset: 0, edge: .top, referenceGuide: .safeArea),
