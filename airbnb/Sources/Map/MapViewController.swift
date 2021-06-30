@@ -25,8 +25,10 @@ class MapViewController: BaseViewController {
     var fpc: FloatingPanelController!
     var tableViewInMapVC: TableViewInMapViewController!
     var mvc: MapViewController!
-    var tabvc: UITabBarController!
-
+    
+    
+    //var tabvc: UITabBarController =
+    
 //    var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
 //
 //    var currentPosition: Position = .middle
@@ -66,6 +68,7 @@ class MapViewController: BaseViewController {
         fpc.behavior = CustomPanelBehavior()
     }
     
+    
     func googleMapConfig() {
         //Google Map
         // Create a GMSCameraPosition that tells the map to display the
@@ -86,21 +89,46 @@ class MapViewController: BaseViewController {
 
 // MARK: - FloatingPanelControllerDelegate
 extension MapViewController: FloatingPanelControllerDelegate {
-    
     func floatingPanelWillBeginDragging(_ fpc: FloatingPanelController) {
+        <#code#>
+    }
+    
+    func floatingPanelDidMove(_ fpc: FloatingPanelController) {
+        var initialPoint: CGPoint = .zero
+        var currentPoint: CGPoint = .zero
+        var currentTabCGPoint: CGPoint = tabBarController!.tabBar.frame.origin
+        print("currentTabCGPoint = \(currentTabCGPoint)")
+        var difference: CGFloat = 0
+        
+        
         if fpc.state == FloatingPanelState.tip {
             if fpc.panGestureRecognizer.translation(in: mainView).y < 0 {
-                tabBarController?.tabBar.isHidden = false
+                
             }
         } else if fpc.state == FloatingPanelState.half {
-            if fpc.panGestureRecognizer.translation(in: mainView).y < 0 {
-                tabBarController?.tabBar.isHidden = false
-            } else {
-                tabBarController?.tabBar.isHidden = true
+            if fpc.panGestureRecognizer.state == .began {
+                initialPoint = fpc.panGestureRecognizer.translation(in: mainView)
+                currentTabCGPoint = tabBarController!.tabBar.frame.origin
+                print("tabBarController.origin = \(currentPoint.x), \(currentPoint.y)")
+                
+            } else if fpc.panGestureRecognizer.state == .changed {
+                currentPoint = fpc.panGestureRecognizer.translation(in: mainView)
+                difference = initialPoint.y - currentPoint.y
+                if currentPoint.y > 0 {
+                    print("Draging Panel")
+                    tabBarController?.tabBar.frame = CGRect(
+                        x: 0,
+                        y: currentTabCGPoint.y - difference / 4,
+                        width: tabBarController!.tabBar.frame.width,
+                        height: tabBarController!.tabBar.frame.height)
+                    print("tabbar y = \(currentTabCGPoint.y - difference / 4)")
+                    
+                }
             }
         }
     }
 }
+    
 
 // MARK: - class MyFloatingPanelLayout: FloatingPanelLayout
 // Change the initial layout
