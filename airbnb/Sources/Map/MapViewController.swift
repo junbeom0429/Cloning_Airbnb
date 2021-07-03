@@ -19,24 +19,20 @@ class MapViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        originTabY = tabBarController?.tabBar.frame.origin.y ?? 0
+        print("OriginTabY = \(originTabY)")
     }
     
     //MARK: - 프로퍼티
     var fpc: FloatingPanelController!
     var tableViewInMapVC: TableViewInMapViewController!
     var mvc: MapViewController!
-    
-    
-    //var tabvc: UITabBarController =
-    
-//    var initialTouchPoint: CGPoint = CGPoint(x: 0,y: 0)
-//
-//    var currentPosition: Position = .middle
-//    enum Position {
-//        case top
-//        case middle
-//        case bottom
-//    }
+    var initialPoint: CGPoint = .zero
+    var currentPoint: CGPoint = .zero
+    var originTabY: CGFloat = 0
+    var currentTabPoint: CGPoint = .zero
+    var beforeState: FloatingPanelState = .half
+    var currentState: FloatingPanelState = .half
     
     //MARK: - 아웃렛
     @IBOutlet weak var filterBtnOutlet: UIButton!
@@ -53,7 +49,6 @@ class MapViewController: BaseViewController {
     func config() {
         filterBtnOutlet.layer.cornerRadius = 20
         headerBarContainerOutlet.layer.cornerRadius = 20
-        
     }
     
     func fpcConfig() {
@@ -90,42 +85,41 @@ class MapViewController: BaseViewController {
 // MARK: - FloatingPanelControllerDelegate
 extension MapViewController: FloatingPanelControllerDelegate {
     func floatingPanelWillBeginDragging(_ fpc: FloatingPanelController) {
-        <#code#>
+        initialPoint = fpc.panGestureRecognizer.translation(in: mainView)
     }
     
+    
     func floatingPanelDidMove(_ fpc: FloatingPanelController) {
-        var initialPoint: CGPoint = .zero
-        var currentPoint: CGPoint = .zero
-        var currentTabCGPoint: CGPoint = tabBarController!.tabBar.frame.origin
-        print("currentTabCGPoint = \(currentTabCGPoint)")
         var difference: CGFloat = 0
-        
-        
-        if fpc.state == FloatingPanelState.tip {
-            if fpc.panGestureRecognizer.translation(in: mainView).y < 0 {
-                
-            }
-        } else if fpc.state == FloatingPanelState.half {
-            if fpc.panGestureRecognizer.state == .began {
-                initialPoint = fpc.panGestureRecognizer.translation(in: mainView)
-                currentTabCGPoint = tabBarController!.tabBar.frame.origin
-                print("tabBarController.origin = \(currentPoint.x), \(currentPoint.y)")
-                
-            } else if fpc.panGestureRecognizer.state == .changed {
+        if fpc.state == FloatingPanelState.half && fpc.panGestureRecognizer.translation(in: mainView).y > 0 {
+            if fpc.panGestureRecognizer.state == .changed {
                 currentPoint = fpc.panGestureRecognizer.translation(in: mainView)
                 difference = initialPoint.y - currentPoint.y
-                if currentPoint.y > 0 {
-                    print("Draging Panel")
-                    tabBarController?.tabBar.frame = CGRect(
-                        x: 0,
-                        y: currentTabCGPoint.y - difference / 4,
-                        width: tabBarController!.tabBar.frame.width,
-                        height: tabBarController!.tabBar.frame.height)
-                    print("tabbar y = \(currentTabCGPoint.y - difference / 4)")
-                    
-                }
+                tabBarController?.tabBar.frame = CGRect(
+                    x: 0,
+                    y: currentTabPoint.y - difference / 4,
+                    width: tabBarController!.tabBar.frame.width,
+                    height: tabBarController!.tabBar.frame.height)
+                
+            }
+        } else if fpc.state == FloatingPanelState.tip && fpc.panGestureRecognizer.translation(in: mainView).y < 0{
+            if fpc.panGestureRecognizer.state == .changed {
+                currentPoint = fpc.panGestureRecognizer.translation(in: mainView)
+                difference = initialPoint.y - currentPoint.y
+                tabBarController?.tabBar.frame = CGRect(
+                    x: 0,
+                    y: currentTabPoint.y - difference / 4,
+                    width: tabBarController!.tabBar.frame.width,
+                    height: tabBarController!.tabBar.frame.height)
+                
             }
         }
+    }
+    
+    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
+        beforeState = currentState
+        currentState = fpc.state
+        if currentState == FloatingPanelState.half {}
     }
 }
     
@@ -146,6 +140,5 @@ class MyFloatingPanelLayout: FloatingPanelLayout {
 }
 // MARK: - class CustomPanelBehavior: FloatingPanelBehavior
 class CustomPanelBehavior: FloatingPanelBehavior {
-    
     
 }
