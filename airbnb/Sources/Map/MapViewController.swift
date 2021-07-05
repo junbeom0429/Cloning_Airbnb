@@ -19,8 +19,7 @@ class MapViewController: BaseViewController {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        originTabY = tabBarController?.tabBar.frame.origin.y ?? 0
-        print("OriginTabY = \(originTabY)")
+        
     }
     
     //MARK: - 프로퍼티
@@ -29,7 +28,7 @@ class MapViewController: BaseViewController {
     var mvc: MapViewController!
     var initialPoint: CGPoint = .zero
     var currentPoint: CGPoint = .zero
-    var originTabY: CGFloat = 0
+    var originTabY: CGFloat = 761
     var currentTabPoint: CGPoint = .zero
     var beforeState: FloatingPanelState = .half
     var currentState: FloatingPanelState = .half
@@ -80,6 +79,13 @@ class MapViewController: BaseViewController {
         marker.snippet = "Australia"
         marker.map = mapView
     }
+    
+    func calcResultY(dif: CGFloat) -> CGFloat {
+        var resultY: CGFloat = 0
+        var tabY: CGFloat = 0
+        
+        return resultY
+    }
 }
 
 // MARK: - FloatingPanelControllerDelegate
@@ -90,31 +96,51 @@ extension MapViewController: FloatingPanelControllerDelegate {
     
     
     func floatingPanelDidMove(_ fpc: FloatingPanelController) {
-        var difference: CGFloat = 0
-        if fpc.state == FloatingPanelState.half && fpc.panGestureRecognizer.translation(in: mainView).y > 0 {
+        var difference = CGFloat()
+        currentTabPoint = tabBarController!.tabBar.frame.origin
+        print("currentTabPoint.y : \(currentTabPoint.y)")
+        
+        if currentTabPoint.y >= originTabY && currentTabPoint.y <= 897 {
             if fpc.panGestureRecognizer.state == .changed {
                 currentPoint = fpc.panGestureRecognizer.translation(in: mainView)
                 difference = initialPoint.y - currentPoint.y
+                
                 tabBarController?.tabBar.frame = CGRect(
                     x: 0,
-                    y: currentTabPoint.y - difference / 4,
+                    y: difference / 3.294,
                     width: tabBarController!.tabBar.frame.width,
                     height: tabBarController!.tabBar.frame.height)
-                
             }
-        } else if fpc.state == FloatingPanelState.tip && fpc.panGestureRecognizer.translation(in: mainView).y < 0{
-            if fpc.panGestureRecognizer.state == .changed {
-                currentPoint = fpc.panGestureRecognizer.translation(in: mainView)
-                difference = initialPoint.y - currentPoint.y
-                tabBarController?.tabBar.frame = CGRect(
-                    x: 0,
-                    y: currentTabPoint.y - difference / 4,
-                    width: tabBarController!.tabBar.frame.width,
-                    height: tabBarController!.tabBar.frame.height)
-                
-            }
+            
+            
+//            if fpc.state == FloatingPanelState.half && fpc.panGestureRecognizer.translation(in: mainView).y > 0 {
+//                if fpc.panGestureRecognizer.state == .changed {
+//                    currentPoint = fpc.panGestureRecognizer.translation(in: mainView)
+//                    difference = initialPoint.y - currentPoint.y
+//                    tabBarController?.tabBar.frame = CGRect(
+//                        x: 0,
+//                        y: currentTabPoint.y - difference / 4,
+//                        width: tabBarController!.tabBar.frame.width,
+//                        height: tabBarController!.tabBar.frame.height)
+//
+//                }
+//            } else if fpc.state == FloatingPanelState.tip && fpc.panGestureRecognizer.translation(in: mainView).y < 0 {
+//                if fpc.panGestureRecognizer.state == .changed {
+//                    currentPoint = fpc.panGestureRecognizer.translation(in: mainView)
+//                    difference = initialPoint.y - currentPoint.y
+//                    tabBarController?.tabBar.frame = CGRect(
+//                        x: 0,
+//                        y: currentTabPoint.y - difference / 4,
+//                        width: tabBarController!.tabBar.frame.width,
+//                        height: tabBarController!.tabBar.frame.height)
+//
+//                }
+//            }
+            
         }
     }
+    
+ 
     
     func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
         beforeState = currentState
