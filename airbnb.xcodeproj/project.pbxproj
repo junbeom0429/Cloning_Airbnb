@@ -68,6 +68,7 @@
 		04ACCBEC2667D492006642B6 /* Section3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBEB2667D492006642B6 /* Section3VC.swift */; };
 		04ACCBEE2667D4A5006642B6 /* Section4VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBED2667D4A5006642B6 /* Section4VC.swift */; };
 		04B56B22266FD2A60055DC4B /* MapResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B56B21266FD2A60055DC4B /* MapResponses.swift */; };
+		04B5EEE72694A839003E39B7 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5EEE62694A839003E39B7 /* Enum.swift */; };
 		04BB2C81265E090C00EF56B6 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2C80265E090C00EF56B6 /* Keyboard.swift */; };
 		04D45D0D2660849C00F80A07 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D45D0C2660849C00F80A07 /* UIScrollView.swift */; };
 		04F580CB267B3DB4001604B6 /* FloatingPanel in Frameworks */ = {isa = PBXBuildFile; productRef = 04F580CA267B3DB4001604B6 /* FloatingPanel */; };
@@ -136,6 +137,7 @@
 		04ACCBEB2667D492006642B6 /* Section3VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section3VC.swift; sourceTree = "<group>"; };
 		04ACCBED2667D4A5006642B6 /* Section4VC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Section4VC.swift; sourceTree = "<group>"; };
 		04B56B21266FD2A60055DC4B /* MapResponses.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapResponses.swift; sourceTree = "<group>"; };
+		04B5EEE62694A839003E39B7 /* Enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enum.swift; sourceTree = "<group>"; };
 		04BB2C80265E090C00EF56B6 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		04D45D0C2660849C00F80A07 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		04F580CC267B4721001604B6 /* TestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
@@ -333,6 +335,7 @@
 				04938E7526593A2F00DA11FF /* Extension */,
 				04938E7626593A3700DA11FF /* CommonClass */,
 				04938E7A26593A7800DA11FF /* Base */,
+				04B5EEE62694A839003E39B7 /* Enum.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
@@ -631,6 +634,7 @@
 				04BB2C81265E090C00EF56B6 /* Keyboard.swift in Sources */,
 				04ACCBE6266647A5006642B6 /* PasswordViewController.swift in Sources */,
 				04938EA12659EB9C00DA11FF /* Color.swift in Sources */,
+				04B5EEE72694A839003E39B7 /* Enum.swift in Sources */,
 				047C3C44266BB73600498755 /* MapViewController.swift in Sources */,
 				040CDDFF2659FB9F00E7E090 /* Tab1VC.swift in Sources */,
 				044ACE7B265E501800C6277C /* Regex.swift in Sources */,
