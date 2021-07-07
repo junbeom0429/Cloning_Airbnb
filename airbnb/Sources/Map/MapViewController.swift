@@ -28,11 +28,12 @@ class MapViewController: BaseViewController {
     var mvc: MapViewController!
     var initialPoint: CGPoint = .zero
     var currentPoint: CGPoint = .zero
-    var tabYWhenShowing: CGFloat = 761
-    var tabYWhenHiding: CGFloat = 841
+    let tabYWhenShowing: CGFloat = 761
+    let tabYWhenHiding: CGFloat = 841
     var currentTabPoint: CGPoint = .zero
-    var beforeState: FloatingPanelState = .half
+    var nearbyState: FloatingPanelState = .half
     var currentState: FloatingPanelState = .half
+    var animator: UIViewPropertyAnimator?
     
     //MARK: - 아웃렛
     @IBOutlet weak var filterBtnOutlet: UIButton!
@@ -84,23 +85,55 @@ class MapViewController: BaseViewController {
     func calcResultY(dif: CGFloat) -> CGFloat {
         var resultY: CGFloat = 0
         var tabY: CGFloat = 0
+        var temp: CGFloat = 0
         
         if fpc.state == FloatingPanelState.half {
             tabY = tabYWhenShowing
         } else if fpc.state == FloatingPanelState.tip {
             tabY = tabYWhenHiding
         }
-        resultY = tabY - (dif / 1.65)
         
-        if resultY < tabYWhenShowing {
+        temp = tabY - (dif / 1.65)
+        
+        if temp < tabYWhenShowing {
             resultY = tabYWhenShowing
-        } else if resultY > tabYWhenHiding {
+        } else if temp > tabYWhenHiding {
             resultY = tabYWhenHiding
+        } else {
+            resultY = temp
         }
         
         return resultY
     }
     
+    func tabbarAnimation(state: FloatingPanelState) {
+        if state == FloatingPanelState.half {
+            print("tabbarAnimation - to half")
+            tabBarController?.tabBar.frame = CGRect(
+            x: 0,
+            y: tabYWhenShowing,
+            width: tabBarController!.tabBar.frame.width,
+            height: tabBarController!.tabBar.frame.height)
+        } else if state == FloatingPanelState.tip {
+            print("tabbarAnimation - to tip")
+            tabBarController?.tabBar.frame = CGRect(
+            x: 0,
+            y: tabYWhenHiding,
+            width: tabBarController!.tabBar.frame.width,
+            height: tabBarController!.tabBar.frame.height)
+        }
+    }
+    func tabbarAnimator(state: FloatingPanelState) {
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: [], animations: {
+            self.tabbarAnimation(state: state)
+        }, completion: { end in
+            print("animation complete")
+        })
+    }
+    
+    func isChangedState() -> Bool {
+        return fpc.state == fpc.nearbyState ? false : true
+    }
     
 }
 
@@ -117,12 +150,13 @@ extension MapViewController: FloatingPanelControllerDelegate {
         case velocity where velocity > 0:
             return .Down
         default:
-            print("velocity = 0")
-            return .Up
+            return .zero
         }
     }
     
     func floatingPanelDidMove(_ fpc: FloatingPanelController) {
+        print("state = \(fpc.state)")
+        print("nearbyState = \(fpc.nearbyState)")
         var difference = CGFloat()
         currentTabPoint = tabBarController!.tabBar.frame.origin
         print("currentTabPoint.y : \(currentTabPoint.y)")
@@ -137,6 +171,8 @@ extension MapViewController: FloatingPanelControllerDelegate {
                 width: tabBarController!.tabBar.frame.width,
                 height: tabBarController!.tabBar.frame.height)
         }
+        
+        
         
         if currentTabPoint.y >= tabYWhenShowing && currentTabPoint.y <= tabYWhenHiding {
             switch currentTabPoint.y {
@@ -156,15 +192,34 @@ extension MapViewController: FloatingPanelControllerDelegate {
                 }
             default:
                 moveFloatingPanel()
+                
             }
         }
     }
-    
-    func floatingPanelDidChangeState(_ fpc: FloatingPanelController) {
-        beforeState = currentState
-        currentState = fpc.state
-        if currentState == FloatingPanelState.half {}
+    func floatingPanelWillEndDragging(_ fpc: FloatingPanelController, withVelocity velocity: CGPoint, targetState: UnsafeMutablePointer<FloatingPanelState>) {
+        if isChangedState() == false {
+            tabbarAnimator(state: fpc.state)
+        }
     }
+//    func floatingPanelDidEndDragging(_ fpc: FloatingPanelController, willAttract attract: Bool) {
+//        let state = fpc.state
+//
+//        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: [], animations: {
+//            self.tabbarAnimation(state: state)
+//        }, completion: { end in
+//            print("animation complete")
+//        })
+//    }
+    
+//    func floatingPanelWillBeginAttracting(_ fpc: FloatingPanelController, to state: FloatingPanelState) {
+//        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: [], animations: {
+//            self.tabbarAnimation(state: state)
+//        }, completion: { end in
+//            print("animation complete")
+//        })
+//
+//    }
+    
 }
     
 

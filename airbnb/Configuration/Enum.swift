@@ -12,6 +12,7 @@ public enum Direction: Int {
     case Down
     case Left
     case Right
+    case zero
 
     public var isX: Bool { return self == .Left || self == .Right }
     public var isY: Bool { return !isX }

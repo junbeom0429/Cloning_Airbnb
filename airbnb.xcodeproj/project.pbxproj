@@ -330,12 +330,12 @@
 				0471CE72265CE0E900546B15 /* UserInform.swift */,
 				047C3C302668F0D400498755 /* SearchInform.swift */,
 				047C3C3C266B3F6C00498755 /* Flag.swift */,
+				04B5EEE62694A839003E39B7 /* Enum.swift */,
 				04938E7326593A2100DA11FF /* Secret */,
 				04938E7426593A2900DA11FF /* Font */,
 				04938E7526593A2F00DA11FF /* Extension */,
 				04938E7626593A3700DA11FF /* CommonClass */,
 				04938E7A26593A7800DA11FF /* Base */,
-				04B5EEE62694A839003E39B7 /* Enum.swift */,
 			);
 			path = Configuration;
 			sourceTree = "<group>";
