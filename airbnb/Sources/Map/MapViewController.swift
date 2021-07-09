@@ -30,16 +30,15 @@ class MapViewController: BaseViewController {
     var currentPoint: CGPoint = .zero
     let tabYWhenShowing: CGFloat = 761
     let tabYWhenHiding: CGFloat = 841
+    let tabbarHeight: CGFloat = 83
+    let tabbarWidth: CGFloat = 390
     var currentTabPoint: CGPoint = .zero
-    var nearbyState: FloatingPanelState = .half
-    var currentState: FloatingPanelState = .half
     var animator: UIViewPropertyAnimator?
     
     //MARK: - 아웃렛
     @IBOutlet weak var filterBtnOutlet: UIButton!
     @IBOutlet weak var headerBarContainerOutlet: UIView!
     @IBOutlet var mainView: UIView!
-    
     
     //MARK: - 액션
     @IBAction func backBtn(_ sender: Any) {
@@ -63,7 +62,6 @@ class MapViewController: BaseViewController {
         fpc.layout = MyFloatingPanelLayout()
         fpc.behavior = CustomPanelBehavior()
     }
-    
     
     func googleMapConfig() {
         //Google Map
@@ -112,19 +110,23 @@ class MapViewController: BaseViewController {
             tabBarController?.tabBar.frame = CGRect(
             x: 0,
             y: tabYWhenShowing,
-            width: tabBarController!.tabBar.frame.width,
-            height: tabBarController!.tabBar.frame.height)
+            width: tabbarWidth,
+            height: tabbarHeight)
         } else if state == FloatingPanelState.tip {
             print("tabbarAnimation - to tip")
             tabBarController?.tabBar.frame = CGRect(
             x: 0,
             y: tabYWhenHiding,
-            width: tabBarController!.tabBar.frame.width,
-            height: tabBarController!.tabBar.frame.height)
+            width: tabbarWidth,
+            height: tabbarHeight)
         }
     }
+    
     func tabbarAnimator(state: FloatingPanelState) {
-        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: [], animations: {
+        // 내가 원하는 건 현재 탭의 y값에서 오픈클로즈시 탭의 y값으로 애니메이션이 진행되는것
+        // 지금 상황은 오픈클로즈시 탭의 y값에서 현재값으로 애니메이션 진행됨
+        
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.1, delay: 0, options: [], animations: {
             self.tabbarAnimation(state: state)
         }, completion: { end in
             print("animation complete")
@@ -135,13 +137,15 @@ class MapViewController: BaseViewController {
         return fpc.state == fpc.nearbyState ? false : true
     }
     
-}
-
-// MARK: - FloatingPanelControllerDelegate
-extension MapViewController: FloatingPanelControllerDelegate {
-    func floatingPanelWillBeginDragging(_ fpc: FloatingPanelController) {
-        initialPoint = fpc.panGestureRecognizer.translation(in: mainView)
+    func moveFloatingPanel(difference: CGFloat) {
+        currentPoint = fpc.panGestureRecognizer.translation(in: mainView)
+        tabBarController?.tabBar.frame = CGRect(
+            x: 0,
+            y: calcResultY(dif: difference),
+            width: tabBarController!.tabBar.frame.width,
+            height: tabBarController!.tabBar.frame.height)
     }
+    
     func calcPanGestureDirection() -> Direction {
         let velocity = fpc.panGestureRecognizer.velocity(in: mainView).y
         switch velocity {
@@ -153,26 +157,19 @@ extension MapViewController: FloatingPanelControllerDelegate {
             return .zero
         }
     }
+}
+
+// MARK: - FloatingPanelControllerDelegate
+extension MapViewController: FloatingPanelControllerDelegate {
+    func floatingPanelWillBeginDragging(_ fpc: FloatingPanelController) {
+        initialPoint = fpc.panGestureRecognizer.translation(in: mainView)
+    }
     
     func floatingPanelDidMove(_ fpc: FloatingPanelController) {
-        print("state = \(fpc.state)")
-        print("nearbyState = \(fpc.nearbyState)")
         var difference = CGFloat()
         currentTabPoint = tabBarController!.tabBar.frame.origin
         print("currentTabPoint.y : \(currentTabPoint.y)")
-        
-        func moveFloatingPanel() {
-            currentPoint = fpc.panGestureRecognizer.translation(in: mainView)
-            difference = initialPoint.y - currentPoint.y
-            
-            tabBarController?.tabBar.frame = CGRect(
-                x: 0,
-                y: calcResultY(dif: difference),
-                width: tabBarController!.tabBar.frame.width,
-                height: tabBarController!.tabBar.frame.height)
-        }
-        
-        
+        difference = initialPoint.y - currentPoint.y
         
         if currentTabPoint.y >= tabYWhenShowing && currentTabPoint.y <= tabYWhenHiding {
             switch currentTabPoint.y {
@@ -181,26 +178,27 @@ extension MapViewController: FloatingPanelControllerDelegate {
                     print("case tabYWhenShowing - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
                     break
                 } else {
-                    moveFloatingPanel()
+                    moveFloatingPanel(difference: difference)
                 }
             case tabYWhenHiding:
                 if calcPanGestureDirection() == .Down {
                     print("case tabYWhenHiding - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
                     break
                 } else {
-                    moveFloatingPanel()
+                    moveFloatingPanel(difference: difference)
                 }
             default:
-                moveFloatingPanel()
-                
+                moveFloatingPanel(difference: difference)
             }
         }
     }
+    
     func floatingPanelWillEndDragging(_ fpc: FloatingPanelController, withVelocity velocity: CGPoint, targetState: UnsafeMutablePointer<FloatingPanelState>) {
         if isChangedState() == false {
             tabbarAnimator(state: fpc.state)
         }
     }
+    
 //    func floatingPanelDidEndDragging(_ fpc: FloatingPanelController, willAttract attract: Bool) {
 //        let state = fpc.state
 //
@@ -219,10 +217,8 @@ extension MapViewController: FloatingPanelControllerDelegate {
 //        })
 //
 //    }
-    
 }
     
-
 // MARK: - class MyFloatingPanelLayout: FloatingPanelLayout
 // Change the initial layout
 class MyFloatingPanelLayout: FloatingPanelLayout {
@@ -237,9 +233,8 @@ class MyFloatingPanelLayout: FloatingPanelLayout {
         ]
     }
 }
+
 // MARK: - class CustomPanelBehavior: FloatingPanelBehavior
 class CustomPanelBehavior: FloatingPanelBehavior {
     
 }
-
-
