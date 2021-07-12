@@ -126,7 +126,7 @@ class MapViewController: BaseViewController {
         // 내가 원하는 건 현재 탭의 y값에서 오픈클로즈시 탭의 y값으로 애니메이션이 진행되는것
         // 지금 상황은 오픈클로즈시 탭의 y값에서 현재값으로 애니메이션 진행됨
         
-        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.1, delay: 0, options: [], animations: {
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
             self.tabbarAnimation(state: state)
         }, completion: { end in
             print("animation complete")
@@ -161,6 +161,8 @@ class MapViewController: BaseViewController {
 
 // MARK: - FloatingPanelControllerDelegate
 extension MapViewController: FloatingPanelControllerDelegate {
+    
+    
     func floatingPanelWillBeginDragging(_ fpc: FloatingPanelController) {
         initialPoint = fpc.panGestureRecognizer.translation(in: mainView)
     }
@@ -170,25 +172,26 @@ extension MapViewController: FloatingPanelControllerDelegate {
         currentTabPoint = tabBarController!.tabBar.frame.origin
         print("currentTabPoint.y : \(currentTabPoint.y)")
         difference = initialPoint.y - currentPoint.y
-        
-        if currentTabPoint.y >= tabYWhenShowing && currentTabPoint.y <= tabYWhenHiding {
-            switch currentTabPoint.y {
-            case tabYWhenShowing:
-                if calcPanGestureDirection() == .Up {
-                    print("case tabYWhenShowing - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
-                    break
-                } else {
+        if fpc.panGestureRecognizer.state == .changed {
+            if currentTabPoint.y >= tabYWhenShowing && currentTabPoint.y <= tabYWhenHiding {
+                switch currentTabPoint.y {
+                case tabYWhenShowing:
+                    if calcPanGestureDirection() == .Up {
+                        print("case tabYWhenShowing - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
+                        break
+                    } else {
+                        moveFloatingPanel(difference: difference)
+                    }
+                case tabYWhenHiding:
+                    if calcPanGestureDirection() == .Down {
+                        print("case tabYWhenHiding - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
+                        break
+                    } else {
+                        moveFloatingPanel(difference: difference)
+                    }
+                default:
                     moveFloatingPanel(difference: difference)
                 }
-            case tabYWhenHiding:
-                if calcPanGestureDirection() == .Down {
-                    print("case tabYWhenHiding - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
-                    break
-                } else {
-                    moveFloatingPanel(difference: difference)
-                }
-            default:
-                moveFloatingPanel(difference: difference)
             }
         }
     }
