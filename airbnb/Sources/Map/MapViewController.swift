@@ -123,9 +123,6 @@ class MapViewController: BaseViewController {
     }
     
     func tabbarAnimator(state: FloatingPanelState) {
-        // 내가 원하는 건 현재 탭의 y값에서 오픈클로즈시 탭의 y값으로 애니메이션이 진행되는것
-        // 지금 상황은 오픈클로즈시 탭의 y값에서 현재값으로 애니메이션 진행됨
-        
         animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
             self.tabbarAnimation(state: state)
         }, completion: { end in
@@ -161,13 +158,12 @@ class MapViewController: BaseViewController {
 
 // MARK: - FloatingPanelControllerDelegate
 extension MapViewController: FloatingPanelControllerDelegate {
-    
-    
     func floatingPanelWillBeginDragging(_ fpc: FloatingPanelController) {
         initialPoint = fpc.panGestureRecognizer.translation(in: mainView)
     }
     
     func floatingPanelDidMove(_ fpc: FloatingPanelController) {
+        print("\(fpc.surfaceLocation)")
         var difference = CGFloat()
         currentTabPoint = tabBarController!.tabBar.frame.origin
         print("currentTabPoint.y : \(currentTabPoint.y)")
@@ -202,24 +198,9 @@ extension MapViewController: FloatingPanelControllerDelegate {
         }
     }
     
-//    func floatingPanelDidEndDragging(_ fpc: FloatingPanelController, willAttract attract: Bool) {
-//        let state = fpc.state
-//
-//        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: [], animations: {
-//            self.tabbarAnimation(state: state)
-//        }, completion: { end in
-//            print("animation complete")
-//        })
-//    }
-    
-//    func floatingPanelWillBeginAttracting(_ fpc: FloatingPanelController, to state: FloatingPanelState) {
-//        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 1, delay: 0, options: [], animations: {
-//            self.tabbarAnimation(state: state)
-//        }, completion: { end in
-//            print("animation complete")
-//        })
-//
-//    }
+    func floatingPanelWillBeginAttracting(_ fpc: FloatingPanelController, to state: FloatingPanelState) {
+        
+    }
 }
     
 // MARK: - class MyFloatingPanelLayout: FloatingPanelLayout
