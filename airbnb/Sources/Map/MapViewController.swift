@@ -153,14 +153,19 @@ class MapViewController: BaseViewController {
     
     func calcY() -> CGFloat {
         var result: CGFloat = 0
-        let dif = currentSurfaceLocationY - initialSurfaceLocationY
-        result = initialTapPointY + (dif / 3.9125)
-        if result > tabYWhenHiding {
-            result = tabYWhenHiding
-        } else if result < tabYWhenShowing {
+        if initialSurfaceLocationY < 404 {
             result = tabYWhenShowing
+            return result
+        } else {
+            let dif = currentSurfaceLocationY - initialSurfaceLocationY
+            result = initialTapPointY + (dif / 3.9125)
+            if result > tabYWhenHiding {
+                result = tabYWhenHiding
+            } else if result < tabYWhenShowing {
+                result = tabYWhenShowing
+            }
+            return result
         }
-        return result
     }
 }
 
