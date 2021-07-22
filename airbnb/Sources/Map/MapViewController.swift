@@ -35,6 +35,11 @@ class MapViewController: BaseViewController {
     var currentTabPoint: CGPoint = .zero
     var animator: UIViewPropertyAnimator?
     
+    var initialTapPointY: CGFloat = 0
+    
+    var initialSurfaceLocationY: CGFloat = 0
+    var currentSurfaceLocationY: CGFloat = 0
+    
     //MARK: - 아웃렛
     @IBOutlet weak var filterBtnOutlet: UIButton!
     @IBOutlet weak var headerBarContainerOutlet: UIView!
@@ -104,27 +109,18 @@ class MapViewController: BaseViewController {
         return resultY
     }
     
-    func tabbarAnimation(state: FloatingPanelState) {
-        if state == FloatingPanelState.half {
-            print("tabbarAnimation - to half")
-            tabBarController?.tabBar.frame = CGRect(
+    func tabbarAnimation() {
+        tabBarController?.tabBar.frame = CGRect(
             x: 0,
-            y: tabYWhenShowing,
-            width: tabbarWidth,
-            height: tabbarHeight)
-        } else if state == FloatingPanelState.tip {
-            print("tabbarAnimation - to tip")
-            tabBarController?.tabBar.frame = CGRect(
-            x: 0,
-            y: tabYWhenHiding,
-            width: tabbarWidth,
-            height: tabbarHeight)
-        }
+            y: calcY(),
+            width: tabBarController!.tabBar.frame.width,
+            height: tabBarController!.tabBar.frame.height)
+        loadViewIfNeeded()
     }
     
-    func tabbarAnimator(state: FloatingPanelState) {
-        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
-            self.tabbarAnimation(state: state)
+    func tabbarAnimator() {
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.01, delay: 0, options: [], animations: {
+            self.tabbarAnimation()
         }, completion: { end in
             print("animation complete")
         })
@@ -154,52 +150,69 @@ class MapViewController: BaseViewController {
             return .zero
         }
     }
+    
+    func calcY() -> CGFloat {
+        var result: CGFloat = 0
+        let dif = currentSurfaceLocationY - initialSurfaceLocationY
+        result = initialTapPointY + (dif / 3.9125)
+        if result > tabYWhenHiding {
+            result = tabYWhenHiding
+        } else if result < tabYWhenShowing {
+            result = tabYWhenShowing
+        }
+        return result
+    }
 }
 
 // MARK: - FloatingPanelControllerDelegate
 extension MapViewController: FloatingPanelControllerDelegate {
     func floatingPanelWillBeginDragging(_ fpc: FloatingPanelController) {
-        initialPoint = fpc.panGestureRecognizer.translation(in: mainView)
+        initialTapPointY = tabBarController!.tabBar.frame.origin.y
+        initialSurfaceLocationY = fpc.surfaceLocation.y
+        
     }
     
     func floatingPanelDidMove(_ fpc: FloatingPanelController) {
-        print("\(fpc.surfaceLocation)")
-        var difference = CGFloat()
         currentTabPoint = tabBarController!.tabBar.frame.origin
-        print("currentTabPoint.y : \(currentTabPoint.y)")
-        difference = initialPoint.y - currentPoint.y
-        if fpc.panGestureRecognizer.state == .changed {
-            if currentTabPoint.y >= tabYWhenShowing && currentTabPoint.y <= tabYWhenHiding {
-                switch currentTabPoint.y {
-                case tabYWhenShowing:
-                    if calcPanGestureDirection() == .Up {
-                        print("case tabYWhenShowing - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
-                        break
-                    } else {
-                        moveFloatingPanel(difference: difference)
-                    }
-                case tabYWhenHiding:
-                    if calcPanGestureDirection() == .Down {
-                        print("case tabYWhenHiding - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
-                        break
-                    } else {
-                        moveFloatingPanel(difference: difference)
-                    }
-                default:
-                    moveFloatingPanel(difference: difference)
-                }
-            }
-        }
-    }
-    
-    func floatingPanelWillEndDragging(_ fpc: FloatingPanelController, withVelocity velocity: CGPoint, targetState: UnsafeMutablePointer<FloatingPanelState>) {
-        if isChangedState() == false {
-            tabbarAnimator(state: fpc.state)
-        }
-    }
-    
-    func floatingPanelWillBeginAttracting(_ fpc: FloatingPanelController, to state: FloatingPanelState) {
+        currentSurfaceLocationY = fpc.surfaceLocation.y
         
+        print("currentTabPoint.y : \(currentTabPoint.y)")
+        print("surfaceLocation : \(fpc.surfaceLocation)")
+        print("calcY : \(calcY())")
+        
+        
+        tabBarController?.tabBar.frame = CGRect(
+            x: 0,
+            y: calcY(),
+            width: tabBarController!.tabBar.frame.width,
+            height: tabBarController!.tabBar.frame.height)
+        loadViewIfNeeded()
+        
+        
+        //        var difference = CGFloat()
+//        difference = initialPoint.y - currentPoint.y
+//        if fpc.panGestureRecognizer.state == .changed {
+//            if currentTabPoint.y >= tabYWhenShowing && currentTabPoint.y <= tabYWhenHiding {
+//                switch currentTabPoint.y {
+//                case tabYWhenShowing:
+//                    if calcPanGestureDirection() == .Up {
+//                        print("case tabYWhenShowing - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
+//                        break
+//                    } else {
+//                        moveFloatingPanel(difference: difference)
+//                    }
+//                case tabYWhenHiding:
+//                    if calcPanGestureDirection() == .Down {
+//                        print("case tabYWhenHiding - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
+//                        break
+//                    } else {
+//                        moveFloatingPanel(difference: difference)
+//                    }
+//                default:
+//                    moveFloatingPanel(difference: difference)
+//                }
+//            }
+//        }
     }
 }
     
