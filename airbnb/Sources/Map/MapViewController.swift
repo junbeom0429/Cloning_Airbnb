@@ -193,31 +193,6 @@ extension MapViewController: FloatingPanelControllerDelegate {
             height: tabBarController!.tabBar.frame.height)
         loadViewIfNeeded()
         
-        
-        //        var difference = CGFloat()
-//        difference = initialPoint.y - currentPoint.y
-//        if fpc.panGestureRecognizer.state == .changed {
-//            if currentTabPoint.y >= tabYWhenShowing && currentTabPoint.y <= tabYWhenHiding {
-//                switch currentTabPoint.y {
-//                case tabYWhenShowing:
-//                    if calcPanGestureDirection() == .Up {
-//                        print("case tabYWhenShowing - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
-//                        break
-//                    } else {
-//                        moveFloatingPanel(difference: difference)
-//                    }
-//                case tabYWhenHiding:
-//                    if calcPanGestureDirection() == .Down {
-//                        print("case tabYWhenHiding - \(fpc.panGestureRecognizer.translation(in: mainView).y)")
-//                        break
-//                    } else {
-//                        moveFloatingPanel(difference: difference)
-//                    }
-//                default:
-//                    moveFloatingPanel(difference: difference)
-//                }
-//            }
-//        }
     }
 }
     

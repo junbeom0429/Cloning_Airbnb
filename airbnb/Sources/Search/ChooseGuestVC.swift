@@ -16,6 +16,10 @@ class ChooseGuestVC: BaseViewController {
         config()
         
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        callAnimator()
+    }
     // MARK: - 프로퍼티
     var adultNum = Int()
     var childNum = Int()
@@ -23,6 +27,7 @@ class ChooseGuestVC: BaseViewController {
     var guestNum: Int = 0 { didSet {
         SearchBtnActiveSwitch()
     }}
+    var animator: UIViewPropertyAnimator?
     
     
     
@@ -42,6 +47,9 @@ class ChooseGuestVC: BaseViewController {
     
     @IBOutlet weak var searchBtn: UIButton!
     @IBOutlet weak var containerView: UIView!
+    
+    @IBOutlet weak var headerText: UITextField!
+    
     
     // MARK: - 액션
     @IBAction func backBtn(_ sender: Any) {
@@ -227,4 +235,16 @@ class ChooseGuestVC: BaseViewController {
         
     }
 
+    func callAnimator() {
+        animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
+            self.textMovingAnimation()
+        }, completion: { end in
+            print("animation complete")
+        })
+    }
+    
+    func textMovingAnimation() {
+        headerText.frame = CGRect(x: 10, y: 30, width: 204, height: headerText.frame.size.height)
+        headerText.alpha = 1
+    }
 }

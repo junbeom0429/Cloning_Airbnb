@@ -712,14 +712,26 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="searchPage4Header" translatesAutoresizingMaskIntoConstraints="NO" id="XmC-oZ-vxv">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="159"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rSF-oa-G5L" userLabel="Header View">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="146"/>
+                                <subviews>
+                                    <textField opaque="NO" alpha="0.0" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="누구랑 가시나요?" textAlignment="natural" minimumFontSize="30" translatesAutoresizingMaskIntoConstraints="NO" id="2Wo-uI-VP2">
+                                        <rect key="frame" x="105" y="54.5" width="204" height="37.5"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="204" id="mOf-cG-Rey"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="XmC-oZ-vxv" secondAttribute="height" multiplier="1125:432" id="mEg-kD-f4G"/>
+                                    <constraint firstItem="2Wo-uI-VP2" firstAttribute="centerY" secondItem="rSF-oa-G5L" secondAttribute="centerY" id="dWY-bh-vFo"/>
+                                    <constraint firstItem="2Wo-uI-VP2" firstAttribute="centerX" secondItem="rSF-oa-G5L" secondAttribute="centerX" id="lwg-mF-d87"/>
                                 </constraints>
-                            </imageView>
+                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="pAH-Nr-FVA" userLabel="Container View">
-                                <rect key="frame" x="0.0" y="139" width="414" height="757"/>
+                                <rect key="frame" x="0.0" y="146" width="414" height="750"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yiy-kP-D51" userLabel="Navi View">
                                         <rect key="frame" x="0.0" y="20" width="414" height="60"/>
@@ -1037,7 +1049,7 @@
                                         </constraints>
                                     </stackView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTq-GB-laR">
-                                        <rect key="frame" x="20" y="546" width="374" height="60"/>
+                                        <rect key="frame" x="20" y="539" width="374" height="60"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aUv-i5-AxF">
                                                 <rect key="frame" x="296" y="9" width="63" height="42"/>
@@ -1071,6 +1083,7 @@
                                     <constraint firstAttribute="bottom" secondItem="dTq-GB-laR" secondAttribute="bottom" constant="151" id="WeS-ia-n35"/>
                                     <constraint firstItem="yiy-kP-D51" firstAttribute="top" secondItem="pAH-Nr-FVA" secondAttribute="top" constant="20" id="Xol-M7-nDL"/>
                                     <constraint firstAttribute="trailing" secondItem="tFK-Ry-Qc8" secondAttribute="trailing" constant="25" id="ZpR-Zc-zGW"/>
+                                    <constraint firstAttribute="height" constant="750" id="hgH-gM-KDH"/>
                                     <constraint firstItem="tFK-Ry-Qc8" firstAttribute="top" secondItem="yiy-kP-D51" secondAttribute="bottom" constant="25" id="iez-92-SoV"/>
                                     <constraint firstAttribute="trailing" secondItem="dTq-GB-laR" secondAttribute="trailing" constant="20" id="txd-1M-dsx"/>
                                     <constraint firstItem="dTq-GB-laR" firstAttribute="leading" secondItem="pAH-Nr-FVA" secondAttribute="leading" constant="20" id="z7B-Qm-GqV"/>
@@ -1080,12 +1093,13 @@
                         <viewLayoutGuide key="safeArea" id="NeG-DC-rlQ"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
-                            <constraint firstItem="XmC-oZ-vxv" firstAttribute="leading" secondItem="NeG-DC-rlQ" secondAttribute="leading" id="3EN-UI-xxB"/>
-                            <constraint firstItem="pAH-Nr-FVA" firstAttribute="top" secondItem="XmC-oZ-vxv" secondAttribute="bottom" constant="-20" id="T1q-kG-6Re"/>
+                            <constraint firstItem="pAH-Nr-FVA" firstAttribute="top" secondItem="rSF-oa-G5L" secondAttribute="bottom" id="Gqf-j4-7q8"/>
+                            <constraint firstItem="rSF-oa-G5L" firstAttribute="centerX" secondItem="NeG-DC-rlQ" secondAttribute="centerX" id="Nt4-Wb-nW6"/>
                             <constraint firstAttribute="bottom" secondItem="pAH-Nr-FVA" secondAttribute="bottom" id="bC1-Rb-jrh"/>
-                            <constraint firstItem="NeG-DC-rlQ" firstAttribute="trailing" secondItem="XmC-oZ-vxv" secondAttribute="trailing" id="bm0-np-djD"/>
-                            <constraint firstItem="XmC-oZ-vxv" firstAttribute="top" secondItem="vkQ-Jv-Ltu" secondAttribute="top" id="q3t-mc-IRp"/>
+                            <constraint firstAttribute="top" secondItem="rSF-oa-G5L" secondAttribute="top" id="gjn-3L-aqA"/>
+                            <constraint firstItem="NeG-DC-rlQ" firstAttribute="trailing" secondItem="rSF-oa-G5L" secondAttribute="trailing" id="i39-wK-982"/>
                             <constraint firstItem="pAH-Nr-FVA" firstAttribute="leading" secondItem="NeG-DC-rlQ" secondAttribute="leading" id="qDx-Kj-WFh"/>
+                            <constraint firstItem="rSF-oa-G5L" firstAttribute="leading" secondItem="NeG-DC-rlQ" secondAttribute="leading" id="qE7-K7-xhJ"/>
                             <constraint firstItem="NeG-DC-rlQ" firstAttribute="trailing" secondItem="pAH-Nr-FVA" secondAttribute="trailing" id="tVF-3u-CzK"/>
                         </constraints>
                     </view>
@@ -1101,6 +1115,7 @@
                         <outlet property="containerView" destination="pAH-Nr-FVA" id="xnC-PS-J6d"/>
                         <outlet property="dateOutlet" destination="5yd-bl-Wr1" id="DiW-W6-KWX"/>
                         <outlet property="guestNumOutlet" destination="YBk-Ds-J4E" id="NUU-Jg-X5B"/>
+                        <outlet property="headerText" destination="2Wo-uI-VP2" id="8ni-jv-E2k"/>
                         <outlet property="searchBtn" destination="aUv-i5-AxF" id="571-wG-otp"/>
                     </connections>
                 </viewController>
@@ -1137,7 +1152,6 @@
         <image name="searchBlueBG" width="1125" height="402"/>
         <image name="searchPage2Header" width="1125" height="432"/>
         <image name="searchPage3Header" width="1125" height="432"/>
-        <image name="searchPage4Header" width="1125" height="432"/>
         <image name="type1" width="988" height="294"/>
         <image name="type2" width="988" height="294"/>
         <image name="type3" width="988" height="294"/>

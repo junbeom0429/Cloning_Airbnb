@@ -67,6 +67,7 @@
 		04ACCBEA2667D482006642B6 /* Section2VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBE92667D482006642B6 /* Section2VC.swift */; };
 		04ACCBEC2667D492006642B6 /* Section3VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBEB2667D492006642B6 /* Section3VC.swift */; };
 		04ACCBEE2667D4A5006642B6 /* Section4VC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04ACCBED2667D4A5006642B6 /* Section4VC.swift */; };
+		04AD085426AEE3DB00D93D8F /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = 04AD085326AEE3DB00D93D8F /* Lottie */; };
 		04B56B22266FD2A60055DC4B /* MapResponses.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B56B21266FD2A60055DC4B /* MapResponses.swift */; };
 		04B5EEE72694A839003E39B7 /* Enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04B5EEE62694A839003E39B7 /* Enum.swift */; };
 		04BB2C81265E090C00EF56B6 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04BB2C80265E090C00EF56B6 /* Keyboard.swift */; };
@@ -156,6 +157,7 @@
 				04938E8D265946F700DA11FF /* SnapKit in Frameworks */,
 				04938E90265947B200DA11FF /* Alamofire in Frameworks */,
 				ECD254E4ECC7DF7B5509BD31 /* Pods_airbnb.framework in Frameworks */,
+				04AD085426AEE3DB00D93D8F /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -459,6 +461,7 @@
 				04938E8F265947B200DA11FF /* Alamofire */,
 				04938E92265947E700DA11FF /* Kingfisher */,
 				04F580CA267B3DB4001604B6 /* FloatingPanel */,
+				04AD085326AEE3DB00D93D8F /* Lottie */,
 			);
 			productName = airbnb;
 			productReference = 04938E5B265939E200DA11FF /* airbnb.app */;
@@ -492,6 +495,7 @@
 				04938E8E265947B200DA11FF /* XCRemoteSwiftPackageReference "Alamofire" */,
 				04938E91265947E600DA11FF /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				04F580C9267B3DB4001604B6 /* XCRemoteSwiftPackageReference "FloatingPanel" */,
+				04AD085226AEE3DB00D93D8F /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = 04938E5C265939E200DA11FF /* Products */;
 			projectDirPath = "";
@@ -867,6 +871,14 @@
 				minimumVersion = 6.3.0;
 			};
 		};
+		04AD085226AEE3DB00D93D8F /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.2.3;
+			};
+		};
 		04F580C9267B3DB4001604B6 /* XCRemoteSwiftPackageReference "FloatingPanel" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/scenee/FloatingPanel";
@@ -892,6 +904,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 04938E91265947E600DA11FF /* XCRemoteSwiftPackageReference "Kingfisher" */;
 			productName = Kingfisher;
+		};
+		04AD085326AEE3DB00D93D8F /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04AD085226AEE3DB00D93D8F /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		04F580CA267B3DB4001604B6 /* FloatingPanel */ = {
 			isa = XCSwiftPackageProductDependency;
