@@ -239,12 +239,12 @@ class ChooseGuestVC: BaseViewController {
         animator = UIViewPropertyAnimator.runningPropertyAnimator(withDuration: 0.2, delay: 0, options: [], animations: {
             self.textMovingAnimation()
         }, completion: { end in
-            print("animation complete")
+            
         })
     }
     
     func textMovingAnimation() {
-        headerText.frame = CGRect(x: 10, y: 30, width: 204, height: headerText.frame.size.height)
+        headerText.frame = CGRect(x: 25, y: 30, width: 204, height: headerText.frame.size.height)
         headerText.alpha = 1
     }
 }
